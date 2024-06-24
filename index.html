@@ -1,134 +1,836 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="img/favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="img/favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="img/favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="img/favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="img/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="img/favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="img/favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="img/favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="img/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="img/favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="img/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="img/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="img/favicon/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!-- Style -->
+    <title>Muhammad Ilfan Asykuri</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,700,800,900&display=swap" rel="stylesheet" />
-    <!-- font Awesome -->
-    <script src="https://kit.fontawesome.com/1f8a12df3e.js" crossorigin="anonymous"></script>
+    <script>
+      document.documentElement.classList.add("dark");
+    </script>
+  </head>
+  <body class="dark:bg-gray-900">
+    <!-- Navbar Start -->
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+      <div
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+      >
+        <a
+          href="img/logo/logo.png"
+          class="flex items-center space-x-3 rtl:space-x-reverse"
+        >
+          <img src="img/logo/logo.png" class="h-8" alt="Flowbite Logo" />
+          <span
+            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+            >Ilfan Asykuri</span
+          >
+        </a>
+        <button
+          data-collapse-toggle="navbar-default"
+          type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="navbar-default"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15"
+            />
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+          <ul
+            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+          >
+            <li>
+              <a
+                href="#home"
+                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                aria-current="page"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#about"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="#skill"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Skills</a
+              >
+            </li>
+            <li>
+              <a
+                href="#sertifikat"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Sertifikat</a
+              >
+            </li>
+            <li>
+              <a
+                href="#project"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Project</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
 
-    <title>M.ILFAN ASYKURI</title>
-    <link rel="shortcut icon" href="image/favicon.ico">
-</head>
+    <!-- Jumbotron Start -->
+    <section id="home" class="bg-white dark:bg-gray-900 mb-4">
+      <div
+        class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
+      >
+        <div class="mr-auto place-self-center lg:col-span-7">
+          <h1
+            class="max-w-1xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl dark:text-white"
+          >
+            Muhammad Ilfan Asykuri
+          </h1>
+          <p
+            class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"
+          >
+            Website Developer | Network Engineer | Tutor At AsramaIT SMKNJ
+          </p>
+          <a
+            href="cv/CV Ilfan.pdf"
+            class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border bg-purple-800 border-purple-300 rounded-lg hover:bg-purple-100 focus:ring-4 focus:ring-purple-100 dark:text-white dark:border-purple-700 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
+          >
+            Download CV
+            <svg
+              class="w-5 h-5 ml-2 -mr-1"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+        </div>
+        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+          <img src="img/ilfan2.png" alt="mockup" />
+        </div>
+      </div>
+    </section>
+    <!-- Jumbotron End -->
 
-<body>
-    <div class="box">
-        <div class="header">
-            <div class="header-left">
-                <div class="name">
-                    <a href="">
-                        <img src="image/ilfan1.jpg" alt="ilfan asykuri">
-                        <span>ILFAN</span>
-                    </a>
-                    <h1 class="nama-depan">MUHAMMAD ILFAN ASYKURI</h1>
-                    <h1 class="jurusan">TEKNOLOGI INFORMASI</h1>
-                </div>
-            </div>
-            <div class="header-right">
-                <div class="email">
-                    <i class="fas fa-envelope"></i>
-                    <p>ilfanhs88bp@gmail.com</p>
-                </div>
-                <div class="facebook">
-                    <i class="fab fa-facebook"></i>
-                    <p>Ilfan Asykuri</p>
-                </div>
-                <div class="instagram">
-                    <i class="fab fa-instagram"></i>
-                    <p>ilfan.asykuri</p>
-                </div>
-                <div class="phone">
-                    <i class="fas fa-phone"></i>
-                    <p>+6282144356926</p>
-                </div>
-                <div class="clear"></div>
-            </div>
+    <!-- About Section Start -->
+    <section id="about" class="bg-white dark:bg-gray-900 mt-4 mb-4">
+      <div
+        class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6"
+      >
+        <img
+          class="w-full hidden dark:block"
+          src="img/about.JPG"
+          alt="dashboard image"
+        />
+        <div class="mt-4 md:mt-0">
+          <h2
+            class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
+          >
+            About Me
+          </h2>
+          <p
+            class="mb-6 font-light text-justify text-gray-500 md:text-lg dark:text-gray-400"
+          >
+            Saya adalah seorang mahasiswa Teknologi Informasi di Universitas
+            Nurul Jadid Paiton Probolinggo. Saya memiliki beberapa pengalaman
+            berharga, termasuk berpartisipasi dalam Lomba Kompetensi Siswa (LKS)
+            Network & Server Administrator tingkat Tapal Kuda dan menjadi tutor
+            dalam pelatihan pembuatan game berbasis VR yang bekerja sama dengan
+            Seamolec. Saat ini, saya juga aktif sebagai tutor di SMK Nurul Jadid
+            Asrama IT, di mana selain berbagi pengetahuan kepada siswa Teknik
+            Komputer dan Jaringan (TKJ), saya juga menerapkan pengetahuan dan
+            keterampilan dalam proyek-proyek inovatif di bidang Teknologi
+            Informasi. Dedikasi saya terhadap pendidikan dan pengembangan
+            teknologi menunjukkan komitmen yang kuat dalam mempersiapkan
+            generasi mendatang untuk menghadapi tantangan di era digital yang
+            terus berkembang. Dengan latar belakang prestasi akademik dan
+            pengalaman praktis yang kaya, saya siap untuk terus berinovasi dan
+            menyumbangkan solusi-solusi teknologi yang relevan dan bermanfaat
+            bagi masyarakat.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- About Section End -->
+
+    <!-- Skill Section Start -->
+    <section id="skill" class="bg-white dark:bg-gray-900 mt-4 mb-4">
+      <div
+        class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6"
+      >
+        <div class="mx-auto mb-8 max-w-screen-sm lg:mb-16">
+          <h2
+            class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
+          >
+            My Skills
+          </h2>
+          <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+            Skill yang saya kuasai
+          </p>
+        </div>
+        <div
+          class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        >
+          <div class="text-center text-gray-500 dark:text-gray-400">
+            <img
+              class="mx-auto mb-4 w-36 h-36"
+              src="img/logo/html.png"
+              alt="HTML"
+            />
+            <h3
+              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+              HTML
+            </h3>
+          </div>
+          <div class="text-center text-gray-500 dark:text-gray-400">
+            <img
+              class="mx-auto mb-4 w-36 h-36"
+              src="img/logo/css.png"
+              alt="CSS"
+            />
+            <h3
+              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+              CSS
+            </h3>
+          </div>
+          <div class="text-center text-gray-500 dark:text-gray-400">
+            <img
+              class="mx-auto mb-4 w-36 h-36"
+              src="img/logo/javascript.png"
+              alt="javascript"
+            />
+            <h3
+              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+              Javascript
+            </h3>
+          </div>
+          <div class="text-center text-gray-500 dark:text-gray-400">
+            <img
+              class="mx-auto mb-4 w-36 h-36"
+              src="img/logo/jquery.png"
+              alt="jquery"
+            />
+            <h3
+              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+              JQuery
+            </h3>
+          </div>
+          <div class="text-center text-gray-500 dark:text-gray-400">
+            <img
+              class="mx-auto mb-4 w-36 h-36"
+              src="img/logo/Bootstrap.png"
+              alt="Bootstrap"
+            />
+            <h3
+              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+              Bootstrap
+            </h3>
+          </div>
+          <div class="text-center text-gray-500 dark:text-gray-400">
+            <img
+              class="mx-auto mb-4 w-50 h-36"
+              src="img/logo/mysql.png"
+              alt="mysql"
+            />
+            <h3
+              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+              Mysql
+            </h3>
+          </div>
+          <div class="text-center text-gray-500 dark:text-gray-400">
+            <img
+              class="mx-auto mb-4 w-36 h-36"
+              src="img/logo/php.png"
+              alt="php"
+            />
+            <h3
+              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+              PHP
+            </h3>
+          </div>
+          <div class="text-center text-gray-500 dark:text-gray-400">
+            <img
+              class="mx-auto mb-4 w-36 h-36"
+              src="img/logo/laravel.png"
+              alt="laravel"
+            />
+            <h3
+              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+            >
+              Laravel
+            </h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Skill Section End -->
+
+    <!-- Sertifikat Section Start -->
+    <section id="sertifikat" class="bg-white dark:bg-gray-900 mt-4 mb-4">
+      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+          <h2
+            class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
+          >
+            My Certificate
+          </h2>
+          <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+            Sertifikat yang saya punya
+          </p>
         </div>
 
-        <hr />
-        <div class="objective">
-            <div class="obj-heading grey">
-                <i class="fas fa-bullseye icon"></i>
-                <h2>Latar Belakang</h2>
-            </div>
-            <p>
-                Muhammad Ilfan Asykuri, Lahir 21 tahun lalu tepat tanggal 03 Juli 2003 di Kota Lumajang. Hobi Traveling, Nonton Film dan Belajar tentang teknologi, bercita-cita menjadi seorang Developer, Network Engineer, dan Cyber Scurity. Saat ini menjadi Mahasiswa
-                jurusan Teknologi Informasi di Universitar Nurul Jadid Paiton Probolinggo, Jejaknya bisa dilacak melalui akun instagram @ilfan.asykuri. Kicauannya kadang terselip di akun facebook @ilfan.asykuri. Thanks! 🙂
-            </p>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div>
+            <img
+              class="h-auto max-w-full rounded-lg"
+              src="img/sertifikat/PHP & Mysql Fundamental Certificate.png"
+              alt="Sertifikat"
+            />
+          </div>
+          <div>
+            <img
+              class="h-auto max-w-full rounded-lg"
+              src="img/sertifikat/Alibaba Cloud Cerfiticate.jpg"
+              alt="Sertifikat"
+            />
+          </div>
+          <div>
+            <img
+              class="h-auto max-w-full rounded-lg"
+              src="img/sertifikat/Debian & Ubuntu Server Administration Certificate.jpg"
+              alt="Sertifikat"
+            />
+          </div>
+          <div>
+            <img
+              class="h-auto max-w-full rounded-lg"
+              src="img/sertifikat/Mikrotik Administration Certificate.jpg"
+              alt="Sertifikat"
+            />
+          </div>
+          <div>
+            <img
+              class="h-auto max-w-full rounded-lg"
+              src="img/sertifikat/IT Network System Administration Certificate1.jpg"
+              alt="Sertifikat"
+            />
+          </div>
+          <div>
+            <img
+              class="h-auto max-w-full rounded-lg"
+              src="img/sertifikat/IT Network System Administration Certificate2.jpg"
+              alt="Sertifikat"
+            />
+          </div>
         </div>
-        <div class="education">
-            <div class="ed-heading grey">
-                <i class="fas fa-school icon"></i>
-                <h2>Pendidikan</h2>
-            </div>
+      </div>
+    </section>
+    <!-- Sertifikat Section End -->
 
-            <table>
-                <tr>
-                    <th>Tingkat</th>
-                    <th>Lembaga</th>
-                    <th>Tahun Kelulusan</th>
-                </tr>
-                <tr>
-                    <td>MI</td>
-                    <td>MI NURUL ISLAM</td>
-                    <td>2016</td>
-                </tr>
-                <tr>
-                    <td>SLTP</td>
-                    <td>MTs NURUL ISLAM</td>
-                    <td>2019</td>
-                </tr>
-                <tr>
-                    <td>SLTA</td>
-                    <td>SMK NURUL JADID</td>
-                    <td>2022</td>
-                </tr>
-                <tr>
-                    <td>Perguruan Tinggi</td>
-                    <td>UNIVERSITAS NURUL JADID</td>
-                    <td>On Progress</td>
-                </tr>
-            </table>
+    <!-- Project Section Start -->
+    <section id="project" class="bg-white dark:bg-gray-900 mt-4 mb-4">
+      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+          <h2
+            class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
+          >
+            My Project
+          </h2>
+          <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+            Project yang sudah saya buat
+          </p>
         </div>
-        <div class="skills">
-            <div class="skills-heading grey">
-                <i class="fas fa-tools icon"></i>
-                <h2>Keterampilan</h2>
+        <div class="grid gap-8 lg:grid-cols-3">
+          <div
+            class="max-w-m bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+          >
+            <img class="rounded-t-lg" src="img/MyProject/project1.png" alt="" />
+            <div class="p-5">
+              <h5
+                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+              >
+                PusdikomApp
+              </h5>
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                PusdikomApp adalah aplikasi yang saya kembangkan untuk mencatat
+                dan mengelola peminjaman di divisi Pusdikom wilayah Zaid Bin
+                Tsabit. Aplikasi ini menggunakan teknologi Bootstrap untuk
+                tampilan front-end yang responsif dan PHP untuk back-end yang
+                handal.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
+              >
+                Live Demo
+                <svg
+                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+              </a>
             </div>
-
-            <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>PHP</li>
-                <li>English</li>
-                <li>3D MODELER</li>
-                <li>AR | VR DEVELOPER</li>
-                <li>NETWORK ENGINEER</li>
-                <li>SERVER ADMINISTRATOR</li>
-            </ul>
-        </div>
-        <div class="activities">
-            <div class="act-heading grey">
-                <i class="fab fa-creative-commons-nd icon"></i>
-                <h2>Kegiatan</h2>
+          </div>
+          <div
+            class="max-w-m bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+          >
+            <img class="rounded-t-lg" src="img/MyProject/project2.png" alt="" />
+            <div class="p-5">
+              <h5
+                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+              >
+                E-Qur'an Portal
+              </h5>
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                E-Qur'an Portal adalah aplikasi yang saya kembangkan untuk
+                memudahkan akses dan pembelajaran Al-Qur'an secara digital.
+                Aplikasi ini menggunakan teknologi Bootstrap untuk tampilan
+                front-end yang responsif dan modern, serta JavaScript sebagai
+                back-end dengan integrasi API dari santrikoding.com.
+              </p>
+              <a
+                href="https://e-quranportal.000webhostapp.com/"
+                target="_blank"
+                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
+              >
+                Live Demo
+                <svg
+                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+              </a>
             </div>
-
-            <p>
-                Saat ini, saya berada dalam peran ganda yang menarik yaitu sebagai mahasiswa di UNIVERSITAS Nurul Jadid Paiton Probolinggo dan juga sebagai santri di Pondok Pesantren Nurul Jadid yang terletak di sana. Meskipun fokus utama saya adalah keagamaan sebagai
-                seorang santri, saya juga memiliki semangat yang tak kalah kuat dalam menjelajahi dunia teknologi. Bagi saya, teknologi adalah pilar utama dalam era modern ini, dan saya merasa penting untuk terus mengikuti perkembangannya yang pesat.
-                Di UNIVERSITAS Nurul Jadid, saya mengejar passion saya dalam mempelajari teknologi, khususnya dalam bidang jaringan dan pengembangan web. Saya percaya bahwa pemahaman yang mendalam dalam hal ini akan membuka banyak peluang di masa depan.
-                Sebelumnya, saat saya masih berstatus sebagai siswa di SMK Nurul Jadid, saya telah aktif terlibat dalam berbagai kegiatan yang menantang seputar teknologi dan industri, seperti berpartisipasi dalam kompetisi LKS Network Administrator serta
-                mengembangkan game berbasis Virtual Reality. Setiap langkah yang saya ambil, baik sebagai mahasiswa maupun sebagai santri, saya jalani dengan semangat dan dedikasi yang tinggi. Saya yakin bahwa kombinasi antara pengetahuan agama dan keahlian
-                dalam teknologi akan membentuk landasan yang kokoh bagi masa depan saya, dan saya berkomitmen untuk terus menggali potensi yang ada dalam diri saya.
-            </p>
+          </div>
+          <div
+            class="max-w-m bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+          >
+            <img class="rounded-t-lg" src="img/MyProject/project3.png" alt="" />
+            <div class="p-5">
+              <h5
+                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+              >
+                GalleryMemo App
+              </h5>
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                GalleryMemo App adalah aplikasi web yang saya kembangkan untuk
+                memudahkan pengguna mengunggah, menyimpan, dan mengelola foto
+                mereka secara online, mirip dengan Google Foto. Aplikasi ini
+                menyediakan antarmuka yang intuitif dan fitur-fitur yang
+                memudahkan pengelolaan koleksi foto pribadi.
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
+              >
+                Live Demo
+                <svg
+                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
-    </div>
-</body>
+      </div>
+    </section>
+    <!-- Project Section End -->
 
+    <!-- Contact Section Start -->
+    <section id="contact" class="bg-white dark:bg-gray-900 mt-4">
+      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+          <h2
+            class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
+          >
+            Contact Me
+          </h2>
+        </div>
+        <div class="grid gap-8 lg:grid-cols-1">
+          <div
+            class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
+          >
+            <form class="space-y-6" onsubmit="sendMessage()">
+              <label
+                for="name"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Your Name</label
+              >
+              <div class="relative mb-6">
+                <div
+                  class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                >
+                  <svg
+                    class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  id="name"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="name"
+                  required
+                />
+              </div>
+              <label
+                for="email"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Your Email</label
+              >
+              <div class="relative mb-6">
+                <div
+                  class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                >
+                  <svg
+                    class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 16"
+                  >
+                    <path
+                      d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"
+                    />
+                    <path
+                      d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  id="email"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="name@flowbite.com"
+                  required
+                />
+              </div>
+              <label
+                for="message"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Your message</label
+              >
+              <div class="flex">
+                <textarea
+                  id="message"
+                  rows="4"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Write your thoughts here..."
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section End -->
+
+    <!-- Footer Section Start -->
+    <footer class="p-4 bg-white sm:p-6 dark:bg-gray-800 mt-4">
+      <div class="mx-auto max-w-screen-xl">
+        <div class="md:flex md:justify-between">
+          <div class="mb-6 md:mb-0">
+            <a href="#" class="flex items-center">
+              <img src="img/logo/logo.png" class="mr-3 h-8" alt="ilfas Logo" />
+              <span
+                class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+                >Ilfan Asykuri</span
+              >
+            </a>
+          </div>
+          <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2">
+            <div>
+              <h2
+                class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+              >
+                RESOURCES
+              </h2>
+              <ul class="text-gray-600 dark:text-gray-400">
+                <li class="mb-4">
+                  <a
+                    href="https://flowbite.com/"
+                    target="_blank"
+                    class="hover:underline"
+                    >Flowbite</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://tailwindcss.com/"
+                    target="_blank"
+                    class="hover:underline"
+                    >Tailwind CSS</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2
+                class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+              >
+                FOLLOW US
+              </h2>
+              <ul class="text-gray-600 dark:text-gray-400">
+                <li class="mb-4">
+                  <a
+                    href="https://github.com/IlfanAsykuri"
+                    class="hover:underline"
+                    target="_blank"
+                    >Github</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/ilfan.asykuri/"
+                    class="hover:underline"
+                    target="_blank"
+                    >Instagram</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr
+          class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
+        />
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+            >© 2022 Developed By Muhammad Ilfan Asykuri
+          </span>
+          <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+            <a
+              href="https://www.facebook.com/ilfan.asykuri.7"
+              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              target="_blank"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/ilfan.asykuri/"
+              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              target="_blank"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://github.com/IlfanAsykuri"
+              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              target="_blank"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-8 right-8 z-50 hidden p-3 bg-purple-700 text-white rounded-full shadow-lg hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-500"
+      aria-label="Scroll to top"
+    >
+      ↑ Back To Top
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <!-- JavaScript for smooth scrolling and back to top button -->
+    <script src="js/script.js"></script>
+  </body>
 </html>
