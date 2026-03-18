@@ -1,1027 +1,1505 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="scroll-smooth">
   <head>
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="img/favicon/apple-icon-57x57.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="img/favicon/apple-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="img/favicon/apple-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="img/favicon/apple-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="img/favicon/apple-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="img/favicon/apple-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="img/favicon/apple-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="img/favicon/apple-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="img/favicon/apple-icon-180x180.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="img/favicon/android-icon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="img/favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="img/favicon/favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="img/favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="img/favicon/manifest.json" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-    <meta name="theme-color" content="#ffffff" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Muhammad Ilfan Asykuri</title>
+    <title>M. Ilfan Asy – Network Engineer & IT Trainer</title>
+    <meta
+      name="description"
+      content="Portfolio of M. Ilfan Asy, a professional Network Engineer and IT Trainer specialising in network infrastructure and IT education."
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS – Animate On Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- AOS Link -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <script>
-      document.documentElement.classList.add("dark");
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              offwhite: "#F9FAFB",
+              charcoal: "#1F2937",
+              navy: "#1E3A5F",
+              slate: "#3B5998",
+              muted: "#6B7280",
+              border: "#E5E7EB",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
     </script>
+
+    <style>
+      /* ── Base ── */
+      body {
+        font-family: "Inter", sans-serif;
+        background: #f9fafb;
+        color: #1f2937;
+      }
+
+      /* ── Navbar ── */
+      #navbar {
+        transition:
+          background 0.3s,
+          box-shadow 0.3s;
+      }
+      #navbar.scrolled {
+        background: rgba(249, 250, 251, 0.85) !important;
+        backdrop-filter: blur(14px);
+        box-shadow: 0 1px 16px rgba(0, 0, 0, 0.07);
+      }
+
+      /* ── Hero gradient text ── */
+      .gradient-text {
+        background: linear-gradient(135deg, #1e3a5f 0%, #3b5998 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* ── Cert card ── */
+      .cert-card {
+        aspect-ratio: 1/1;
+        overflow: hidden;
+        border-radius: 1rem;
+        cursor: pointer;
+      }
+      .cert-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      .cert-card:hover img {
+        transform: scale(1.07);
+      }
+      .cert-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(30, 58, 95, 0.85) 0%,
+          transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.3s;
+        display: flex;
+        align-items: flex-end;
+        padding: 1rem;
+      }
+      .cert-card:hover .cert-overlay {
+        opacity: 1;
+      }
+
+      /* ── Back-to-top ── */
+      #btt {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      #btt.show {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      /* ── Infinite Scroll Carousel ── */
+      .carousel-wrapper {
+        overflow: hidden;
+        /* fade edges */
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent 0%,
+          #000 8%,
+          #000 92%,
+          transparent 100%
+        );
+        mask-image: linear-gradient(
+          to right,
+          transparent 0%,
+          #000 8%,
+          #000 92%,
+          transparent 100%
+        );
+      }
+      .carousel-track {
+        display: flex;
+        gap: 20px;
+        margin: 30px;
+        width: max-content;
+      }
+      /* Row 1 – scroll left */
+      .carousel-track.scroll-left {
+        animation: scrollLeft 30s linear infinite;
+      }
+      /* Row 2 – scroll right */
+      .carousel-track.scroll-right {
+        animation: scrollRight 30s linear infinite;
+      }
+
+      @keyframes scrollLeft {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      @keyframes scrollRight {
+        from {
+          transform: translateX(-50%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      /* Pause on hover of the TRACK (so hovering any pill pauses) */
+      .carousel-track:hover {
+        animation-play-state: paused;
+      }
+
+      /* Pill card */
+      .skill-pill {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #ffffff;
+        border: 1px solid #f3f4f6;
+        border-radius: 16px;
+        padding: 12px 24px 12px 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        white-space: nowrap;
+        flex-shrink: 0;
+        height: 100px;
+        transition:
+          box-shadow 0.3s,
+          transform 0.3s;
+      }
+      .skill-pill:hover {
+        box-shadow: 0 12px 28px rgba(30, 58, 95, 0.12);
+        transform: translateY(-3px) scale(1.02);
+      }
+      .skill-pill .pill-icon {
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        overflow: hidden;
+      }
+      .skill-pill .pill-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .skill-pill .pill-label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #1f2937;
+      }
+
+      /* ── Nav link underline ── */
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        background: #1e3a5f;
+        transition: width 0.3s;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* ── Mobile menu ── */
+      #mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+      #mobile-menu.open {
+        max-height: 400px;
+      }
+
+      /* ── Form focus ── */
+      .form-input:focus {
+        outline: none;
+        border-color: #1e3a5f;
+        box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.15);
+      }
+
+      /* ── Project card ── */
+      .project-card {
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(30, 58, 95, 0.12);
+      }
+
+      /* ── AOS custom ── */
+      [data-aos] {
+        will-change: transform, opacity;
+      }
+    </style>
   </head>
-  <body class="dark:bg-gray-900">
-    <!-- Navbar Start -->
-    <nav
-      class="bg-white border-gray-200 dark:bg-gray-900"
-      data-aos="fade-down"
-      data-aos-duration="1000"
-    >
-      <div
-        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
-      >
-        <a
-          href="img/logo/logo.png"
-          class="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <img src="img/logo/logo.png" class="h-8" alt="Flowbite Logo" />
-          <span
-            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-            >Ilfan Asykuri</span
-          >
+  <body class="antialiased">
+    <!-- ═══════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════ -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-4">
+      <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#hero" class="text-xl font-bold text-charcoal tracking-tight">
+          <span class="gradient-text">Ilfan</span
+          ><span class="text-charcoal">.</span>
         </a>
-        <button
-          data-collapse-toggle="navbar-default"
-          type="button"
-          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-default"
-          aria-expanded="false"
+
+        <!-- Desktop links -->
+        <ul
+          class="hidden md:flex items-center gap-8 text-sm font-medium text-muted"
         >
-          <span class="sr-only">Open main menu</span>
-          <svg
-            class="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 1h15M1 7h15M1 13h15"
-            />
-          </svg>
+          <li>
+            <a
+              href="#about"
+              class="nav-link hover:text-charcoal transition-colors"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#skills"
+              class="nav-link hover:text-charcoal transition-colors"
+              >Skills</a
+            >
+          </li>
+          <li>
+            <a
+              href="#certs"
+              class="nav-link hover:text-charcoal transition-colors"
+              >Certificates</a
+            >
+          </li>
+          <li>
+            <a
+              href="#projects"
+              class="nav-link hover:text-charcoal transition-colors"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="bg-navy text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-slate transition-colors"
+              >Contact</a
+            >
+          </li>
+        </ul>
+
+        <!-- Hamburger -->
+        <button
+          id="hamburger"
+          aria-label="Toggle menu"
+          class="md:hidden flex flex-col gap-1.5"
+        >
+          <span
+            class="ham-line block w-6 h-0.5 bg-charcoal transition-all duration-300"
+          ></span>
+          <span
+            class="ham-line block w-6 h-0.5 bg-charcoal transition-all duration-300"
+          ></span>
+          <span
+            class="ham-line block w-6 h-0.5 bg-charcoal transition-all duration-300"
+          ></span>
         </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul
-            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-          >
-            <li>
-              <a
-                href="#home"
-                class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                aria-current="page"
-                >Home</a
-              >
-            </li>
-            <li>
-              <a
-                href="#about"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >About</a
-              >
-            </li>
-            <li>
-              <a
-                href="#skill"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Skills</a
-              >
-            </li>
-            <li>
-              <a
-                href="#sertifikat"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Sertifikat</a
-              >
-            </li>
-            <li>
-              <a
-                href="#project"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Project</a
-              >
-            </li>
-            <li>
-              <a
-                href="#contact"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >Contact</a
-              >
-            </li>
-          </ul>
-        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        id="mobile-menu"
+        class="md:hidden bg-white/95 backdrop-blur border-t border-border mt-4"
+      >
+        <ul
+          class="flex flex-col px-6 py-4 gap-4 text-sm font-medium text-charcoal"
+        >
+          <li><a href="#about" class="mobile-nav block">About</a></li>
+          <li><a href="#skills" class="mobile-nav block">Skills</a></li>
+          <li><a href="#certs" class="mobile-nav block">Certificates</a></li>
+          <li><a href="#projects" class="mobile-nav block">Projects</a></li>
+          <li><a href="#contact" class="mobile-nav block">Contact</a></li>
+        </ul>
       </div>
     </nav>
-    <!-- Navbar End -->
 
-    <!-- Jumbotron Start -->
-    <section id="home" class="bg-white dark:bg-gray-900 mb-4">
+    <!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+    <section id="hero" class="min-h-screen flex items-center pt-20 pb-16">
       <div
-        class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
+        class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center w-full"
       >
-        <div
-          class="mr-auto place-self-center lg:col-span-7"
-          data-aos="fade-right"
-          data-aos-duration="1000"
-          data-aos-delay="1200"
-        >
+        <!-- Text -->
+        <div data-aos="fade-right" data-aos-duration="800">
+          <span
+            class="inline-block text-xs font-semibold tracking-widest text-slate uppercase mb-6 border border-slate/30 px-4 py-1.5 rounded-full bg-slate/5"
+            >Available for Projects</span
+          >
           <h1
-            class="max-w-1xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl dark:text-white"
+            class="text-5xl md:text-6xl font-extrabold text-charcoal leading-tight mb-4"
           >
-            Muhammad Ilfan Asykuri
+            M. Ilfan <span class="gradient-text">Asy</span>
           </h1>
-          <p
-            class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"
-          >
-            Website Developer | Network Engineer | Tutor At AsramaIT SMKNJ
+          <p class="text-2xl font-semibold text-navy mb-4">
+            Network Engineer &amp; IT Trainer
           </p>
-          <a
-            href="cv/cv ilfan.png"
-            download="CV Ilfan.png"
-            class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border bg-purple-800 border-purple-300 rounded-lg hover:bg-purple-100 focus:ring-4 focus:ring-purple-100 dark:text-white dark:border-purple-700 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
-          >
-            Download CV
-            <svg
-              class="w-5 h-5 ml-2 -mr-1"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
+          <p class="text-muted text-base leading-relaxed mb-8 max-w-md">
+            Designing resilient network infrastructures and empowering the next
+            generation of IT professionals through hands-on training,
+            documentation, and mentorship.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="cv.pdf"
+              download
+              class="inline-flex items-center gap-2 bg-navy text-white px-7 py-3 rounded-full font-semibold text-sm hover:bg-slate transition-colors shadow-lg shadow-navy/20"
             >
-              <path
-                fill-rule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
+              <i data-lucide="download" class="w-4 h-4"></i> Download CV
+            </a>
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 border-2 border-navy text-navy px-7 py-3 rounded-full font-semibold text-sm hover:bg-navy hover:text-white transition-colors"
+            >
+              <i data-lucide="mail" class="w-4 h-4"></i> Contact Me
+            </a>
+          </div>
+
+          <!-- Quick stats -->
+          <div class="mt-12 flex gap-10">
+            <div>
+              <p class="text-3xl font-bold text-charcoal">5+</p>
+              <p class="text-xs text-muted mt-1">Years Experience</p>
+            </div>
+            <div class="border-l border-border pl-10">
+              <p class="text-3xl font-bold text-charcoal">30+</p>
+              <p class="text-xs text-muted mt-1">Courses Delivered</p>
+            </div>
+            <div class="border-l border-border pl-10">
+              <p class="text-3xl font-bold text-charcoal">10+</p>
+              <p class="text-xs text-muted mt-1">Certifications</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo -->
+        <div
+          data-aos="fade-left"
+          data-aos-duration="800"
+          data-aos-delay="100"
+          class="flex justify-center"
+        >
+          <div class="relative">
+            <!-- decorative ring -->
+            <div
+              class="absolute inset-0 rounded-3xl bg-gradient-to-br from-navy/20 to-slate/20 blur-2xl scale-105"
+            ></div>
+            <div
+              class="relative w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden border-4 border-white shadow-2xl"
+            >
+              <!-- Placeholder avatar — replace src with real photo -->
+              <div
+                class="w-full h-full bg-gradient-to-br from-navy to-slate flex items-center justify-center"
+              >
+                <i data-lucide="user" class="w-32 h-32 text-white/40"></i>
+              </div>
+            </div>
+            <!-- floating badge -->
+            <div
+              class="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-2 border border-border"
+            >
+              <div
+                class="w-3 h-3 rounded-full bg-green-400 animate-pulse"
+              ></div>
+              <span class="text-xs font-semibold text-charcoal"
+                >Open to Work</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════════ -->
+    <section id="about" class="py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-2xl mx-auto text-center mb-16" data-aos="fade-up">
+          <span
+            class="text-xs font-semibold tracking-widest text-slate uppercase"
+            >About Me</span
+          >
+          <h2 class="text-4xl font-bold text-charcoal mt-3">Who I Am</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          <div data-aos="fade-right">
+            <p class="text-muted leading-relaxed mb-4">
+              I'm a dedicated
+              <strong class="text-charcoal">Network Engineer</strong> with over
+              5 years of hands-on experience designing, implementing, and
+              maintaining enterprise-grade network infrastructures. My expertise
+              spans routing &amp; switching, network security, VPN solutions,
+              and cloud networking.
+            </p>
+            <p class="text-muted leading-relaxed mb-6">
+              Beyond engineering, I have a deep passion for
+              <strong class="text-charcoal">IT education</strong>. As a
+              certified IT Trainer, I have delivered 30+ structured courses and
+              workshops, mentoring students and professionals in networking
+              fundamentals, Cisco technologies, and cybersecurity.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="bg-navy/5 text-navy text-xs font-semibold px-4 py-2 rounded-full border border-navy/20"
+                >🎓 Cisco Certified</span
+              >
+              <span
+                class="bg-navy/5 text-navy text-xs font-semibold px-4 py-2 rounded-full border border-navy/20"
+                >🌐 Network Design</span
+              >
+              <span
+                class="bg-navy/5 text-navy text-xs font-semibold px-4 py-2 rounded-full border border-navy/20"
+                >📚 IT Trainer</span
+              >
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-2 gap-5"
+            data-aos="fade-left"
+            data-aos-delay="100"
+          >
+            <!-- Info cards -->
+            <div class="bg-offwhite rounded-2xl p-5 border border-border">
+              <i data-lucide="map-pin" class="w-5 h-5 text-navy mb-3"></i>
+              <p class="text-xs text-muted">Location</p>
+              <p class="text-sm font-semibold text-charcoal mt-1">Indonesia</p>
+            </div>
+            <div class="bg-offwhite rounded-2xl p-5 border border-border">
+              <i data-lucide="briefcase" class="w-5 h-5 text-navy mb-3"></i>
+              <p class="text-xs text-muted">Role</p>
+              <p class="text-sm font-semibold text-charcoal mt-1">
+                Network Engineer
+              </p>
+            </div>
+            <div class="bg-offwhite rounded-2xl p-5 border border-border">
+              <i
+                data-lucide="graduation-cap"
+                class="w-5 h-5 text-navy mb-3"
+              ></i>
+              <p class="text-xs text-muted">Education</p>
+              <p class="text-sm font-semibold text-charcoal mt-1">
+                S1 Informatika
+              </p>
+            </div>
+            <div class="bg-offwhite rounded-2xl p-5 border border-border">
+              <i data-lucide="languages" class="w-5 h-5 text-navy mb-3"></i>
+              <p class="text-xs text-muted">Languages</p>
+              <p class="text-sm font-semibold text-charcoal mt-1">ID / EN</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+     SKILLS – Infinite Scroll Carousel
+════════════════════════════════════════════ -->
+    <section id="skills" class="py-24 overflow-hidden">
+      <div class="max-w-6xl mx-auto px-6 mb-14" data-aos="fade-up">
+        <div class="text-center">
+          <span
+            class="text-xs font-semibold tracking-widest text-slate uppercase"
+            >Expertise</span
+          >
+          <h2 class="text-4xl font-bold text-charcoal mt-3">
+            Skills &amp; Tools
+          </h2>
+          <p class="text-muted text-sm mt-4 max-w-md mx-auto">
+            Technologies and platforms I work with every day &mdash; hover to
+            pause.
+          </p>
+        </div>
+      </div>
+
+      <!-- ROW 1 — scrolls LEFT -->
+      <div class="carousel-wrapper mb-5" data-aos="fade-up" data-aos-delay="50">
+        <div class="carousel-track scroll-left">
+          <!-- Set A -->
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Cisco.png" alt="Cisco" /></span
+            ><span class="pill-label">Cisco</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/MikroTik.png" alt="MikroTik" /></span
+            ><span class="pill-label">MikroTik</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Linux.png" alt="Linux" /></span
+            ><span class="pill-label">Linux</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Wireshark.png" alt="Wireshark" /></span
+            ><span class="pill-label">Wireshark</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Fortinet.png" alt="Fortinet" /></span
+            ><span class="pill-label">Fortinet</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/AWS.jpg" alt="AWS" /></span
+            ><span class="pill-label">AWS</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Python.png" alt="Python" /></span
+            ><span class="pill-label">Python</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/VMware.png" alt="VMware" /></span
+            ><span class="pill-label">VMware</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Docker.png" alt="Docker" /></span
+            ><span class="pill-label">Docker</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Proxmox.png" alt="Proxmox" /></span
+            ><span class="pill-label">Proxmox</span>
+          </div>
+          <!-- Set B — duplicate for seamless loop -->
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Cisco.png" alt="Cisco" /></span
+            ><span class="pill-label">Cisco</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/MikroTik.png" alt="MikroTik" /></span
+            ><span class="pill-label">MikroTik</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Linux.png" alt="Linux" /></span
+            ><span class="pill-label">Linux</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Wireshark.png" alt="Wireshark" /></span
+            ><span class="pill-label">Wireshark</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Fortinet.png" alt="Fortinet" /></span
+            ><span class="pill-label">Fortinet</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/AWS.jpg" alt="AWS" /></span
+            ><span class="pill-label">AWS</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Python.png" alt="Python" /></span
+            ><span class="pill-label">Python</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/VMware.png" alt="VMware" /></span
+            ><span class="pill-label">VMware</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Docker.png" alt="Docker" /></span
+            ><span class="pill-label">Docker</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Proxmox.png" alt="Proxmox" /></span
+            ><span class="pill-label">Proxmox</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 2 — scrolls RIGHT -->
+      <div class="carousel-wrapper" data-aos="fade-up" data-aos-delay="100">
+        <div class="carousel-track scroll-right">
+          <!-- Set A -->
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Zabbix.png" alt="Zabbix" /></span
+            ><span class="pill-label">Zabbix</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Grafana.png" alt="Grafana" /></span
+            ><span class="pill-label">Grafana</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/GNS3.png" alt="GNS3" /></span
+            ><span class="pill-label">GNS3</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/PNET.png" alt="PNET-Lab" /></span
+            ><span class="pill-label">PNET-Lab</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Git.png" alt="Git" /></span
+            ><span class="pill-label">Git</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Ubuntu.png" alt="Ubuntu" /></span
+            ><span class="pill-label">Ubuntu</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Debian.png" alt="Debian" /></span
+            ><span class="pill-label">Debian</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/NMAP.jpg" alt="NMAP" /></span
+            ><span class="pill-label">NMAP</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Winbox.png" alt="Winbox" /></span
+            ><span class="pill-label">Winbox</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Nginx.png" alt="NGINX" /></span
+            ><span class="pill-label">NGINX</span>
+          </div>
+          <!-- Set B — duplicate for seamless loop -->
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Zabbix.png" alt="Zabbix" /></span
+            ><span class="pill-label">Zabbix</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Grafana.png" alt="Grafana" /></span
+            ><span class="pill-label">Grafana</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/GNS3.png" alt="GNS3" /></span
+            ><span class="pill-label">GNS3</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/PNET.png" alt="PNET-Lab" /></span
+            ><span class="pill-label">PNET-Lab</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Git.png" alt="Git" /></span
+            ><span class="pill-label">Git</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Ubuntu.png" alt="Ubuntu" /></span
+            ><span class="pill-label">Ubuntu</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Debian.png" alt="Debian" /></span
+            ><span class="pill-label">Debian</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/NMAP.jpg" alt="NMAP" /></span
+            ><span class="pill-label">NMAP</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Winbox.png" alt="Winbox" /></span
+            ><span class="pill-label">Winbox</span>
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon"
+              ><img src="Assets/Logo/Nginx.png" alt="NGINX" /></span
+            ><span class="pill-label">NGINX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+     CERTIFICATES
+════════════════════════════════════════════ -->
+    <section id="certs" class="py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <span
+            class="text-xs font-semibold tracking-widest text-slate uppercase"
+            >Credentials</span
+          >
+          <h2 class="text-4xl font-bold text-charcoal mt-3">Certificates</h2>
+          <p class="text-muted mt-4 max-w-md mx-auto text-sm">
+            A selection of certifications that validate my expertise in
+            networking and IT training.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          <!-- Certificate cards — replace bg placeholders with <img src="cert-X.jpg" alt="..." /> inside .cert-card -->
+
+          <div
+            class="cert-card relative shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="0"
+          >
+            <div
+              class="w-full h-full aspect-square bg-gradient-to-br from-navy to-slate flex flex-col items-center justify-center text-white p-4"
+            >
+              <i data-lucide="award" class="w-10 h-10 mb-3 opacity-80"></i>
+              <p class="text-xs font-bold text-center">Cisco CCNA</p>
+              <p class="text-[10px] opacity-70 mt-1 text-center">
+                Routing & Switching
+              </p>
+            </div>
+            <div class="cert-overlay">
+              <p class="text-white text-xs font-semibold">Cisco CCNA – R&S</p>
+            </div>
+          </div>
+
+          <div
+            class="cert-card relative shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="50"
+          >
+            <div
+              class="w-full h-full aspect-square bg-gradient-to-br from-slate-600 to-slate-800 flex flex-col items-center justify-center text-white p-4"
+            >
+              <i
+                data-lucide="shield-check"
+                class="w-10 h-10 mb-3 opacity-80"
+              ></i>
+              <p class="text-xs font-bold text-center">CompTIA Security+</p>
+              <p class="text-[10px] opacity-70 mt-1 text-center">
+                Cybersecurity
+              </p>
+            </div>
+            <div class="cert-overlay">
+              <p class="text-white text-xs font-semibold">CompTIA Security+</p>
+            </div>
+          </div>
+
+          <div
+            class="cert-card relative shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <div
+              class="w-full h-full aspect-square bg-gradient-to-br from-indigo-600 to-indigo-900 flex flex-col items-center justify-center text-white p-4"
+            >
+              <i data-lucide="network" class="w-10 h-10 mb-3 opacity-80"></i>
+              <p class="text-xs font-bold text-center">MikroTik MTCNA</p>
+              <p class="text-[10px] opacity-70 mt-1 text-center">
+                Network Associate
+              </p>
+            </div>
+            <div class="cert-overlay">
+              <p class="text-white text-xs font-semibold">MikroTik MTCNA</p>
+            </div>
+          </div>
+
+          <div
+            class="cert-card relative shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="150"
+          >
+            <div
+              class="w-full h-full aspect-square bg-gradient-to-br from-teal-600 to-teal-900 flex flex-col items-center justify-center text-white p-4"
+            >
+              <i data-lucide="book-open" class="w-10 h-10 mb-3 opacity-80"></i>
+              <p class="text-xs font-bold text-center">Certified IT Trainer</p>
+              <p class="text-[10px] opacity-70 mt-1 text-center">
+                Training & Education
+              </p>
+            </div>
+            <div class="cert-overlay">
+              <p class="text-white text-xs font-semibold">
+                Certified IT Trainer
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="cert-card relative shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <div
+              class="w-full h-full aspect-square bg-gradient-to-br from-orange-500 to-orange-800 flex flex-col items-center justify-center text-white p-4"
+            >
+              <i data-lucide="cloud" class="w-10 h-10 mb-3 opacity-80"></i>
+              <p class="text-xs font-bold text-center">
+                AWS Cloud Practitioner
+              </p>
+              <p class="text-[10px] opacity-70 mt-1 text-center">
+                Cloud Fundamentals
+              </p>
+            </div>
+            <div class="cert-overlay">
+              <p class="text-white text-xs font-semibold">
+                AWS Cloud Practitioner
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="cert-card relative shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="250"
+          >
+            <div
+              class="w-full h-full aspect-square bg-gradient-to-br from-rose-600 to-rose-900 flex flex-col items-center justify-center text-white p-4"
+            >
+              <i data-lucide="lock" class="w-10 h-10 mb-3 opacity-80"></i>
+              <p class="text-xs font-bold text-center">BNSP Network Tech</p>
+              <p class="text-[10px] opacity-70 mt-1 text-center">
+                National Certification
+              </p>
+            </div>
+            <div class="cert-overlay">
+              <p class="text-white text-xs font-semibold">
+                BNSP – Network Technician
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="cert-card relative shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+          >
+            <div
+              class="w-full h-full aspect-square bg-gradient-to-br from-purple-600 to-purple-900 flex flex-col items-center justify-center text-white p-4"
+            >
+              <i data-lucide="server" class="w-10 h-10 mb-3 opacity-80"></i>
+              <p class="text-xs font-bold text-center">Linux Essentials</p>
+              <p class="text-[10px] opacity-70 mt-1 text-center">
+                LPI Certification
+              </p>
+            </div>
+            <div class="cert-overlay">
+              <p class="text-white text-xs font-semibold">
+                LPI Linux Essentials
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="cert-card relative shadow-md"
+            data-aos="zoom-in"
+            data-aos-delay="350"
+          >
+            <div
+              class="w-full h-full aspect-square bg-gradient-to-br from-cyan-600 to-cyan-900 flex flex-col items-center justify-center text-white p-4"
+            >
+              <i data-lucide="wifi" class="w-10 h-10 mb-3 opacity-80"></i>
+              <p class="text-xs font-bold text-center">Fortinet NSE 4</p>
+              <p class="text-[10px] opacity-70 mt-1 text-center">
+                Network Security
+              </p>
+            </div>
+            <div class="cert-overlay">
+              <p class="text-white text-xs font-semibold">Fortinet NSE 4</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+     PROJECTS / EXPERIENCE
+════════════════════════════════════════════ -->
+    <section id="projects" class="py-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <span
+            class="text-xs font-semibold tracking-widest text-slate uppercase"
+            >Portfolio</span
+          >
+          <h2 class="text-4xl font-bold text-charcoal mt-3">
+            Projects & Experience
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Project 1 -->
+          <div
+            class="project-card bg-white border border-border rounded-2xl p-7 shadow-sm"
+            data-aos="fade-up"
+            data-aos-delay="0"
+          >
+            <div class="flex items-start gap-4 mb-5">
+              <div
+                class="w-12 h-12 rounded-xl bg-navy/10 flex items-center justify-center flex-shrink-0"
+              >
+                <i data-lucide="network" class="w-6 h-6 text-navy"></i>
+              </div>
+              <div>
+                <span
+                  class="text-[10px] font-semibold text-slate uppercase tracking-widest"
+                  >Network Design</span
+                >
+                <h3 class="text-lg font-bold text-charcoal mt-0.5">
+                  Enterprise Network Topology Design
+                </h3>
+              </div>
+            </div>
+            <p class="text-muted text-sm leading-relaxed mb-5">
+              Designed and implemented a full enterprise network topology for a
+              multi-branch organisation, including redundancy via HSRP/VRRP,
+              VLAN segmentation, inter-VLAN routing, and site-to-site VPN
+              tunnels using Cisco routers and FortiGate firewalls.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span
+                class="text-[10px] bg-navy/5 text-navy border border-navy/15 font-semibold px-3 py-1 rounded-full"
+                >Cisco</span
+              >
+              <span
+                class="text-[10px] bg-navy/5 text-navy border border-navy/15 font-semibold px-3 py-1 rounded-full"
+                >FortiGate</span
+              >
+              <span
+                class="text-[10px] bg-navy/5 text-navy border border-navy/15 font-semibold px-3 py-1 rounded-full"
+                >OSPF</span
+              >
+              <span
+                class="text-[10px] bg-navy/5 text-navy border border-navy/15 font-semibold px-3 py-1 rounded-full"
+                >HSRP</span
+              >
+              <span
+                class="text-[10px] bg-navy/5 text-navy border border-navy/15 font-semibold px-3 py-1 rounded-full"
+                >VPN</span
+              >
+            </div>
+            <div
+              class="flex items-center gap-4 text-xs text-muted border-t border-border pt-4"
+            >
+              <span class="flex items-center gap-1"
+                ><i data-lucide="calendar" class="w-3 h-3"></i> 2024</span
+              >
+              <span class="flex items-center gap-1"
+                ><i data-lucide="building" class="w-3 h-3"></i> Enterprise
+                Client</span
+              >
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="project-card bg-white border border-border rounded-2xl p-7 shadow-sm"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="flex items-start gap-4 mb-5">
+              <div
+                class="w-12 h-12 rounded-xl bg-slate/10 flex items-center justify-center flex-shrink-0"
+              >
+                <i data-lucide="file-text" class="w-6 h-6 text-slate"></i>
+              </div>
+              <div>
+                <span
+                  class="text-[10px] font-semibold text-slate uppercase tracking-widest"
+                  >IT Training</span
+                >
+                <h3 class="text-lg font-bold text-charcoal mt-0.5">
+                  IT Training Documentation & Modules
+                </h3>
+              </div>
+            </div>
+            <p class="text-muted text-sm leading-relaxed mb-5">
+              Developed comprehensive training modules covering CCNA
+              fundamentals, MikroTik administration, and Linux networking.
+              Materials include lab guides, slide decks, and assessment rubrics
+              used across 30+ training sessions.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span
+                class="text-[10px] bg-slate/5 text-slate border border-slate/15 font-semibold px-3 py-1 rounded-full"
+                >CCNA</span
+              >
+              <span
+                class="text-[10px] bg-slate/5 text-slate border border-slate/15 font-semibold px-3 py-1 rounded-full"
+                >MikroTik</span
+              >
+              <span
+                class="text-[10px] bg-slate/5 text-slate border border-slate/15 font-semibold px-3 py-1 rounded-full"
+                >Linux</span
+              >
+              <span
+                class="text-[10px] bg-slate/5 text-slate border border-slate/15 font-semibold px-3 py-1 rounded-full"
+                >Curriculum</span
+              >
+            </div>
+            <div
+              class="flex items-center gap-4 text-xs text-muted border-t border-border pt-4"
+            >
+              <span class="flex items-center gap-1"
+                ><i data-lucide="calendar" class="w-3 h-3"></i> 2022 –
+                Present</span
+              >
+              <span class="flex items-center gap-1"
+                ><i data-lucide="users" class="w-3 h-3"></i> 500+ Trainees</span
+              >
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div
+            class="project-card bg-white border border-border rounded-2xl p-7 shadow-sm"
+            data-aos="fade-up"
+            data-aos-delay="50"
+          >
+            <div class="flex items-start gap-4 mb-5">
+              <div
+                class="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center flex-shrink-0"
+              >
+                <i data-lucide="shield" class="w-6 h-6 text-teal-700"></i>
+              </div>
+              <div>
+                <span
+                  class="text-[10px] font-semibold text-teal-600 uppercase tracking-widest"
+                  >Security</span
+                >
+                <h3 class="text-lg font-bold text-charcoal mt-0.5">
+                  Network Security Hardening
+                </h3>
+              </div>
+            </div>
+            <p class="text-muted text-sm leading-relaxed mb-5">
+              Conducted network security audit and hardening for a government
+              agency, including ACL implementation, port-security, SNMP
+              hardening, and IDS/IPS configuration. Reduced attack surface by
+              60%.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span
+                class="text-[10px] bg-teal-50 text-teal-700 border border-teal-200 font-semibold px-3 py-1 rounded-full"
+                >ACL</span
+              >
+              <span
+                class="text-[10px] bg-teal-50 text-teal-700 border border-teal-200 font-semibold px-3 py-1 rounded-full"
+                >IDS/IPS</span
+              >
+              <span
+                class="text-[10px] bg-teal-50 text-teal-700 border border-teal-200 font-semibold px-3 py-1 rounded-full"
+                >SNMP</span
+              >
+              <span
+                class="text-[10px] bg-teal-50 text-teal-700 border border-teal-200 font-semibold px-3 py-1 rounded-full"
+                >Audit</span
+              >
+            </div>
+            <div
+              class="flex items-center gap-4 text-xs text-muted border-t border-border pt-4"
+            >
+              <span class="flex items-center gap-1"
+                ><i data-lucide="calendar" class="w-3 h-3"></i> 2023</span
+              >
+              <span class="flex items-center gap-1"
+                ><i data-lucide="building" class="w-3 h-3"></i> Government</span
+              >
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div
+            class="project-card bg-white border border-border rounded-2xl p-7 shadow-sm"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
+            <div class="flex items-start gap-4 mb-5">
+              <div
+                class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center flex-shrink-0"
+              >
+                <i
+                  data-lucide="bar-chart-2"
+                  class="w-6 h-6 text-purple-700"
+                ></i>
+              </div>
+              <div>
+                <span
+                  class="text-[10px] font-semibold text-purple-600 uppercase tracking-widest"
+                  >Monitoring</span
+                >
+                <h3 class="text-lg font-bold text-charcoal mt-0.5">
+                  Network Monitoring Dashboard
+                </h3>
+              </div>
+            </div>
+            <p class="text-muted text-sm leading-relaxed mb-5">
+              Built a real-time network monitoring system using Zabbix and
+              Grafana for an ISP, dashboarding bandwidth utilisation, device
+              health, and uptime SLA across 200+ devices.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-5">
+              <span
+                class="text-[10px] bg-purple-50 text-purple-700 border border-purple-200 font-semibold px-3 py-1 rounded-full"
+                >Zabbix</span
+              >
+              <span
+                class="text-[10px] bg-purple-50 text-purple-700 border border-purple-200 font-semibold px-3 py-1 rounded-full"
+                >Grafana</span
+              >
+              <span
+                class="text-[10px] bg-purple-50 text-purple-700 border border-purple-200 font-semibold px-3 py-1 rounded-full"
+                >SNMP</span
+              >
+              <span
+                class="text-[10px] bg-purple-50 text-purple-700 border border-purple-200 font-semibold px-3 py-1 rounded-full"
+                >Linux</span
+              >
+            </div>
+            <div
+              class="flex items-center gap-4 text-xs text-muted border-t border-border pt-4"
+            >
+              <span class="flex items-center gap-1"
+                ><i data-lucide="calendar" class="w-3 h-3"></i> 2023–2024</span
+              >
+              <span class="flex items-center gap-1"
+                ><i data-lucide="building" class="w-3 h-3"></i> ISP Client</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════ -->
+    <section id="contact" class="py-24 bg-white">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="text-center mb-14" data-aos="fade-up">
+          <span
+            class="text-xs font-semibold tracking-widest text-slate uppercase"
+            >Get In Touch</span
+          >
+          <h2 class="text-4xl font-bold text-charcoal mt-3">
+            Let's Work Together
+          </h2>
+          <p class="text-muted mt-4 text-sm max-w-md mx-auto">
+            Have a project in mind or need an IT trainer? Send me a message and
+            I'll get back to you within 24 hours.
+          </p>
+        </div>
+
+        <!-- Quick contact info -->
+        <div
+          class="flex flex-wrap justify-center gap-6 mb-12"
+          data-aos="fade-up"
+          data-aos-delay="50"
+        >
+          <a
+            href="mailto:ilfan@example.com"
+            class="flex items-center gap-2 text-sm text-muted hover:text-navy transition-colors"
+          >
+            <i data-lucide="mail" class="w-4 h-4 text-navy"></i>
+            ilfan@example.com
+          </a>
+          <a
+            href="https://linkedin.com/in/ilfanasy"
+            target="_blank"
+            class="flex items-center gap-2 text-sm text-muted hover:text-navy transition-colors"
+          >
+            <i data-lucide="linkedin" class="w-4 h-4 text-navy"></i>
+            linkedin.com/in/ilfanasy
+          </a>
+          <a
+            href="https://github.com/ilfanasy"
+            target="_blank"
+            class="flex items-center gap-2 text-sm text-muted hover:text-navy transition-colors"
+          >
+            <i data-lucide="github" class="w-4 h-4 text-navy"></i>
+            github.com/ilfanasy
           </a>
         </div>
-        <div
-          class="hidden lg:mt-0 lg:col-span-5 lg:flex"
-          data-aos="fade-left"
-          data-aos-duration="1000"
-          data-aos-delay="1200"
+
+        <!-- Form -->
+        <form
+          id="contact-form"
+          class="bg-offwhite border border-border rounded-2xl p-8 space-y-5 shadow-sm"
+          data-aos="fade-up"
+          data-aos-delay="100"
+          novalidate
         >
-          <img src="img/ilfan2.png" alt="mockup" />
-        </div>
-      </div>
-    </section>
-    <!-- Jumbotron End -->
-
-    <!-- About Section Start -->
-    <section id="about" class="bg-white dark:bg-gray-900 mt-4 mb-4">
-      <div
-        class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6"
-      >
-        <img
-          class="w-full hidden dark:block"
-          src="img/about.JPG"
-          alt="dashboard image"
-          data-aos="fade-down-right"
-          data-aos-duration="1000"
-        />
-        <div
-          class="mt-4 md:mt-0"
-          data-aos="fade-down-left"
-          data-aos-duration="1000"
-        >
-          <h2
-            class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
-          >
-            About Me
-          </h2>
-          <p
-            class="mb-6 font-light text-justify text-gray-500 md:text-lg dark:text-gray-400"
-          >
-            Saya adalah seorang mahasiswa Teknologi Informasi di Universitas
-            Nurul Jadid Paiton Probolinggo. Saya memiliki beberapa pengalaman
-            berharga, termasuk berpartisipasi dalam Lomba Kompetensi Siswa (LKS)
-            Network & Server Administrator tingkat Tapal Kuda dan menjadi tutor
-            dalam pelatihan pembuatan game berbasis VR yang bekerja sama dengan
-            Seamolec. Saat ini, saya juga aktif sebagai tutor di SMK Nurul Jadid
-            Asrama IT, di mana selain berbagi pengetahuan kepada siswa Teknik
-            Komputer dan Jaringan (TKJ), saya juga menerapkan pengetahuan dan
-            keterampilan dalam proyek-proyek inovatif di bidang Teknologi
-            Informasi. Dedikasi saya terhadap pendidikan dan pengembangan
-            teknologi menunjukkan komitmen yang kuat dalam mempersiapkan
-            generasi mendatang untuk menghadapi tantangan di era digital yang
-            terus berkembang. Dengan latar belakang prestasi akademik dan
-            pengalaman praktis yang kaya, saya siap untuk terus berinovasi dan
-            menyumbangkan solusi-solusi teknologi yang relevan dan bermanfaat
-            bagi masyarakat.
-          </p>
-        </div>
-      </div>
-    </section>
-    <!-- About Section End -->
-
-    <!-- Skill Section Start -->
-    <section
-      id="skill"
-      class="bg-white dark:bg-gray-900 mt-4 mb-4"
-      data-aos="zoom-in"
-      data-aos-duration="1000"
-    >
-      <div
-        class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6"
-      >
-        <div class="mx-auto mb-8 max-w-screen-sm lg:mb-16">
-          <h2
-            class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
-          >
-            My Skills
-          </h2>
-          <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            Skill yang saya kuasai
-          </p>
-        </div>
-        <div
-          class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-        >
-          <div class="text-center text-gray-500 dark:text-gray-400">
-            <img
-              class="mx-auto mb-4 w-36 h-36"
-              src="img/logo/html.png"
-              alt="HTML"
-            />
-            <h3
-              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-              HTML
-            </h3>
-          </div>
-          <div class="text-center text-gray-500 dark:text-gray-400">
-            <img
-              class="mx-auto mb-4 w-36 h-36"
-              src="img/logo/css.png"
-              alt="CSS"
-            />
-            <h3
-              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-              CSS
-            </h3>
-          </div>
-          <div class="text-center text-gray-500 dark:text-gray-400">
-            <img
-              class="mx-auto mb-4 w-36 h-36"
-              src="img/logo/javascript.png"
-              alt="javascript"
-            />
-            <h3
-              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-              Javascript
-            </h3>
-          </div>
-          <div class="text-center text-gray-500 dark:text-gray-400">
-            <img
-              class="mx-auto mb-4 w-36 h-36"
-              src="img/logo/jquery.png"
-              alt="jquery"
-            />
-            <h3
-              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-              JQuery
-            </h3>
-          </div>
-          <div class="text-center text-gray-500 dark:text-gray-400">
-            <img
-              class="mx-auto mb-4 w-36 h-36"
-              src="img/logo/Bootstrap.png"
-              alt="Bootstrap"
-            />
-            <h3
-              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-              Bootstrap
-            </h3>
-          </div>
-          <div class="text-center text-gray-500 dark:text-gray-400">
-            <img
-              class="mx-auto mb-4 w-50 h-36"
-              src="img/logo/mysql.png"
-              alt="mysql"
-            />
-            <h3
-              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-              Mysql
-            </h3>
-          </div>
-          <div class="text-center text-gray-500 dark:text-gray-400">
-            <img
-              class="mx-auto mb-4 w-36 h-36"
-              src="img/logo/php.png"
-              alt="php"
-            />
-            <h3
-              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-              PHP
-            </h3>
-          </div>
-          <div class="text-center text-gray-500 dark:text-gray-400">
-            <img
-              class="mx-auto mb-4 w-36 h-36"
-              src="img/logo/laravel.png"
-              alt="laravel"
-            />
-            <h3
-              class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-            >
-              Laravel
-            </h3>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Skill Section End -->
-
-    <!-- Sertifikat Section Start -->
-    <section
-      id="sertifikat"
-      class="bg-white dark:bg-gray-900 mt-4 mb-4"
-      data-aos="zoom-in-down"
-      data-aos-duration="1000"
-    >
-      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-          <h2
-            class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
-          >
-            My Certificate
-          </h2>
-          <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            Sertifikat yang saya punya
-          </p>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <div>
-            <img
-              class="h-auto max-w-full rounded-lg"
-              src="img/sertifikat/PHP & Mysql Fundamental Certificate.png"
-              alt="Sertifikat"
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-lg"
-              src="img/sertifikat/Alibaba Cloud Cerfiticate.jpg"
-              alt="Sertifikat"
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-lg"
-              src="img/sertifikat/Debian & Ubuntu Server Administration Certificate.jpg"
-              alt="Sertifikat"
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-lg"
-              src="img/sertifikat/Mikrotik Administration Certificate.jpg"
-              alt="Sertifikat"
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-lg"
-              src="img/sertifikat/IT Network System Administration Certificate1.jpg"
-              alt="Sertifikat"
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-lg"
-              src="img/sertifikat/IT Network System Administration Certificate2.jpg"
-              alt="Sertifikat"
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-lg"
-              src="img/sertifikat/Game Competition UNUJA.jpg"
-              alt="Sertifikat"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Sertifikat Section End -->
-
-    <!-- Project Section Start -->
-    <section
-      id="project"
-      class="bg-white dark:bg-gray-900 mt-4 mb-4"
-      data-aos="fade-up"
-      data-aos-duration="1000"
-    >
-      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-          <h2
-            class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
-          >
-            My Project
-          </h2>
-          <p class="font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            Project yang sudah saya buat
-          </p>
-        </div>
-        <div class="grid gap-8 lg:grid-cols-3">
-          <div
-            class="max-w-m bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <img class="rounded-t-lg" src="img/MyProject/project1.png" alt="" />
-            <div class="p-5">
-              <h5
-                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-              >
-                PusdikomApp
-              </h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                PusdikomApp adalah aplikasi yang saya kembangkan untuk mencatat
-                dan mengelola peminjaman di divisi Pusdikom wilayah Zaid Bin
-                Tsabit. Aplikasi ini menggunakan teknologi Bootstrap untuk
-                tampilan front-end yang responsif dan PHP untuk back-end yang
-                handal.
-              </p>
-              <a
-                href="#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
-              >
-                Live Demo
-                <svg
-                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div
-            class="max-w-m bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <img class="rounded-t-lg" src="img/MyProject/project2.png" alt="" />
-            <div class="p-5">
-              <h5
-                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-              >
-                E-Qur'an Portal
-              </h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                E-Qur'an Portal adalah aplikasi yang saya kembangkan untuk
-                memudahkan akses dan pembelajaran Al-Qur'an secara digital.
-                Aplikasi ini menggunakan teknologi Bootstrap untuk tampilan
-                front-end yang responsif dan modern, serta JavaScript sebagai
-                back-end dengan integrasi API dari santrikoding.com.
-              </p>
-              <a
-                href="https://e-quranportal.000webhostapp.com/"
-                target="_blank"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
-              >
-                Live Demo
-                <svg
-                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div
-            class="max-w-m bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <img class="rounded-t-lg" src="img/MyProject/project3.png" alt="" />
-            <div class="p-5">
-              <h5
-                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-              >
-                GalleryMemo
-              </h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                GalleryMemo App adalah aplikasi web yang saya kembangkan untuk
-                memudahkan pengguna mengunggah, menyimpan, dan mengelola foto
-                mereka secara online, mirip dengan Google Foto. Aplikasi ini
-                menyediakan antarmuka yang intuitif dan fitur-fitur yang
-                memudahkan pengelolaan koleksi foto pribadi.
-              </p>
-              <a
-                href="#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
-              >
-                Live Demo
-                <svg
-                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div
-            class="max-w-m bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <img class="rounded-t-lg" src="img/MyProject/project4.png" alt="" />
-            <div class="p-5">
-              <h5
-                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-              >
-                Web Profile & PPDB
-              </h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Website ini dibuat dalam rangka KKN 2024 dan dirancang untuk
-                memudahkan akses informasi bagi seluruh anggota dan calon
-                peserta didik. Website ini dibangun dengan menggunakan teknologi
-                terkini untuk memberikan pengalaman pengguna yang optimal.
-                Dengan memanfaatkan Framework Bootstrap untuk front-end,
-                tampilan website menjadi responsif dan menarik. Sedangkan untuk
-                back-end, kami menggunakan PHP native yang handal dan efisien
-                dalam mengelola data dan informasi.
-              </p>
-              <a
-                href="https://ypptarbiyatulislamiyah.my.id/"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
-                target="_blank"
-              >
-                Live Demo
-                <svg
-                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div
-            class="max-w-m bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <img class="rounded-t-lg" src="img/MyProject/project5.png" alt="" />
-            <div class="p-5">
-              <h5
-                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-              >
-                E-Jadwal Excellent Language
-              </h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                E-Jadwal Excellent Language adalah aplikasi yang dirancang untuk
-                mempermudah pengelolaan dan penjadwalan kegiatan belajar
-                mengajar di program bahasa inggris Excellent Language wilayah
-                Zaid bin Tsabit Pondok Pesantren Nurul Jadid Paiton
-                Probbolinggo. Dengan antarmuka yang sederhana dan intuitif,
-                aplikasi ini memungkinkan para pengajar dan siswa untuk
-                mengakses jadwal kelas, informasi penting, dan perubahan jadwal
-                secara real-time. Aplikasi ini dibangun untuk mendukung
-                efisiensi dan produktivitas, sehingga semua pihak dapat fokus
-                pada proses pembelajaran tanpa perlu khawatir akan jadwal yang
-                bentrok atau informasi yang terlewat. Dengan E-Jadwal Excellent
-                Language, pengelolaan waktu menjadi lebih terstruktur dan
-                terorganisir dengan baik.
-              </p>
-              <a
-                href="#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
-              >
-                Live Demo
-                <svg
-                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div
-            class="max-w-m bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-          >
-            <img class="rounded-t-lg" src="img/MyProject/project6.png" alt="" />
-            <div class="p-5">
-              <h5
-                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-              >
-                Game Ular Tangga Kemerdekaan
-              </h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Game ini merupakan adaptasi dari permainan klasik Ular Tangga
-                yang dibalut dengan tema Kemerdekaan Indonesia. Konsep utama
-                dari game ini adalah untuk menggabungkan kesenangan bermain Ular
-                Tangga dengan elemen edukasi sejarah, di mana pemain diajak
-                untuk mengenang kembali perjalanan panjang bangsa Indonesia
-                dalam meraih kemerdekaan. Setiap aspek dari game ini, mulai dari
-                karakter, papan permainan, hingga mekanisme permainan, dirancang
-                untuk mencerminkan nilai-nilai perjuangan dan patriotisme.
-              </p>
-              <a
-                href="#"
-                class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
-              >
-                Live Demo
-                <svg
-                  class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Project Section End -->
-
-    <!-- Contact Section Start -->
-    <section
-      id="contact"
-      class="bg-white dark:bg-gray-900 mt-4"
-      data-aos="fade-up"
-      data-aos-duration="1000"
-      data-aos-anchor-placement="center-bottom"
-    >
-      <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-        <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-          <h2
-            class="mb-4 text-3xl lg:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
-          >
-            Contact Me
-          </h2>
-        </div>
-        <div class="grid gap-8 lg:grid-cols-1">
-          <div
-            class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
-          >
-            <form class="space-y-6" onsubmit="sendMessage()">
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
               <label
+                class="block text-xs font-semibold text-charcoal mb-2"
                 for="name"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Your Name</label
+                >Full Name</label
               >
-              <div class="relative mb-6">
-                <div
-                  class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
-                >
-                  <svg
-                    class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"
-                    />
-                  </svg>
-                </div>
-                <input
-                  type="text"
-                  id="name"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="name"
-                  required
-                />
-              </div>
+              <input
+                id="name"
+                type="text"
+                placeholder="John Doe"
+                required
+                class="form-input w-full bg-white border border-border rounded-xl px-4 py-3 text-sm text-charcoal placeholder-muted/60 transition-all"
+              />
+            </div>
+            <div>
               <label
+                class="block text-xs font-semibold text-charcoal mb-2"
                 for="email"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Your Email</label
+                >Email Address</label
               >
-              <div class="relative mb-6">
-                <div
-                  class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
-                >
-                  <svg
-                    class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 16"
-                  >
-                    <path
-                      d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"
-                    />
-                    <path
-                      d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"
-                    />
-                  </svg>
-                </div>
-                <input
-                  type="text"
-                  id="email"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="name@gmail.com"
-                  required
-                />
-              </div>
-              <label
-                for="message"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Your message</label
-              >
-              <div class="flex">
-                <textarea
-                  id="message"
-                  rows="4"
-                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Write your thoughts here..."
-                  required
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                class="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800"
-              >
-                Send Message
-              </button>
-            </form>
+              <input
+                id="email"
+                type="email"
+                placeholder="john@example.com"
+                required
+                class="form-input w-full bg-white border border-border rounded-xl px-4 py-3 text-sm text-charcoal placeholder-muted/60 transition-all"
+              />
+            </div>
           </div>
-        </div>
+          <div>
+            <label
+              class="block text-xs font-semibold text-charcoal mb-2"
+              for="subject"
+              >Subject</label
+            >
+            <input
+              id="subject"
+              type="text"
+              placeholder="Project Inquiry / Training Request"
+              class="form-input w-full bg-white border border-border rounded-xl px-4 py-3 text-sm text-charcoal placeholder-muted/60 transition-all"
+            />
+          </div>
+          <div>
+            <label
+              class="block text-xs font-semibold text-charcoal mb-2"
+              for="message"
+              >Message</label
+            >
+            <textarea
+              id="message"
+              rows="5"
+              placeholder="Tell me more about your needs…"
+              required
+              class="form-input w-full bg-white border border-border rounded-xl px-4 py-3 text-sm text-charcoal placeholder-muted/60 transition-all resize-none"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-navy text-white font-semibold py-3.5 rounded-xl hover:bg-slate transition-colors text-sm flex items-center justify-center gap-2"
+          >
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span id="btn-label">Send Message</span>
+          </button>
+          <p id="form-status" class="text-center text-sm hidden"></p>
+        </form>
       </div>
     </section>
-    <!-- Contact Section End -->
 
-    <!-- Footer Section Start -->
-    <footer class="p-4 bg-white sm:p-6 dark:bg-gray-800 mt-4">
-      <div class="mx-auto max-w-screen-xl">
-        <div class="md:flex md:justify-between">
-          <div class="mb-6 md:mb-0">
-            <a href="#" class="flex items-center">
-              <img src="img/logo/logo.png" class="mr-3 h-8" alt="ilfas Logo" />
-              <span
-                class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-                >Ilfan Asykuri</span
-              >
-            </a>
-          </div>
-          <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2">
-            <div>
-              <h2
-                class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
-              >
-                RESOURCES
-              </h2>
-              <ul class="text-gray-600 dark:text-gray-400">
-                <li class="mb-4">
-                  <a
-                    href="https://flowbite.com/"
-                    target="_blank"
-                    class="hover:underline"
-                    >Flowbite</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://tailwindcss.com/"
-                    target="_blank"
-                    class="hover:underline"
-                    >Tailwind CSS</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h2
-                class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
-              >
-                FOLLOW US
-              </h2>
-              <ul class="text-gray-600 dark:text-gray-400">
-                <li class="mb-4">
-                  <a
-                    href="https://github.com/IlfanAsykuri"
-                    class="hover:underline"
-                    target="_blank"
-                    >Github</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://www.instagram.com/ilfan.asykuri/"
-                    class="hover:underline"
-                    target="_blank"
-                    >Instagram</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
+    <!-- ═══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+    <footer class="py-10 border-t border-border">
+      <div
+        class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted"
+      >
+        <p>
+          © 2025 <span class="font-semibold text-charcoal">M. Ilfan Asy</span>.
+          All rights reserved.
+        </p>
+        <div class="flex gap-5">
+          <a href="#hero" class="hover:text-navy transition-colors">Home</a>
+          <a href="#skills" class="hover:text-navy transition-colors">Skills</a>
+          <a href="#certs" class="hover:text-navy transition-colors"
+            >Certificates</a
+          >
+          <a href="#projects" class="hover:text-navy transition-colors"
+            >Projects</a
+          >
+          <a href="#contact" class="hover:text-navy transition-colors"
+            >Contact</a
+          >
         </div>
-        <hr
-          class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
-        />
-        <div class="sm:flex sm:items-center sm:justify-between">
-          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
-            >© 2022 Developed By Muhammad Ilfan Asykuri
-          </span>
-          <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-            <a
-              href="https://www.facebook.com/ilfan.asykuri.7"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-              target="_blank"
-            >
-              <svg
-                class="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-            <a
-              href="https://www.instagram.com/ilfan.asykuri/"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-              target="_blank"
-            >
-              <svg
-                class="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-            <a
-              href="https://github.com/IlfanAsykuri"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-              target="_blank"
-            >
-              <svg
-                class="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </div>
-        </div>
+        <p>Built with ♥ &amp; Tailwind CSS</p>
       </div>
     </footer>
-    <!-- Footer Section End -->
 
-    <!-- Back to Top Button -->
+    <!-- ═══════════════════════════════════════════
+     BACK TO TOP
+════════════════════════════════════════════ -->
     <button
-      id="back-to-top"
-      class="fixed bottom-8 right-8 z-50 hidden p-3 bg-purple-700 text-white rounded-full shadow-lg hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-purple-500"
-      aria-label="Scroll to top"
+      id="btt"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      aria-label="Back to top"
+      class="fixed bottom-8 right-8 w-11 h-11 bg-navy text-white rounded-full shadow-lg shadow-navy/30 flex items-center justify-center hover:bg-slate transition-colors z-40"
     >
-      ↑ Back To Top
+      <i data-lucide="chevron-up" class="w-5 h-5"></i>
     </button>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <!-- JavaScript for smooth scrolling and back to top button -->
-    <script src="js/script.js"></script>
-    <!-- AOS -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- ═══════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════ -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-      AOS.init();
+      // ── Init Lucide icons ──
+      lucide.createIcons();
+
+      // ── Init AOS ──
+      AOS.init({
+        once: true,
+        offset: 80,
+        duration: 700,
+        easing: "ease-out-cubic",
+      });
+
+      // ── Navbar scroll effect ──
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 30);
+      });
+
+      // ── Back to top button ──
+      const btt = document.getElementById("btt");
+      window.addEventListener("scroll", () => {
+        btt.classList.toggle("show", window.scrollY > 300);
+      });
+
+      // ── Hamburger / mobile menu ──
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const hamLines = hamburger.querySelectorAll(".ham-line");
+      let menuOpen = false;
+
+      hamburger.addEventListener("click", () => {
+        menuOpen = !menuOpen;
+        mobileMenu.classList.toggle("open", menuOpen);
+        // Animate hamburger to X
+        if (menuOpen) {
+          hamLines[0].style.transform = "translateY(8px) rotate(45deg)";
+          hamLines[1].style.opacity = "0";
+          hamLines[2].style.transform = "translateY(-8px) rotate(-45deg)";
+        } else {
+          hamLines[0].style.transform = "";
+          hamLines[1].style.opacity = "";
+          hamLines[2].style.transform = "";
+        }
+      });
+
+      // Close menu on mobile nav link click
+      document.querySelectorAll(".mobile-nav").forEach((link) => {
+        link.addEventListener("click", () => {
+          menuOpen = false;
+          mobileMenu.classList.remove("open");
+          hamLines[0].style.transform = "";
+          hamLines[1].style.opacity = "";
+          hamLines[2].style.transform = "";
+        });
+      });
+
+      // ── Contact form (static / demo) ──
+      const form = document.getElementById("contact-form");
+      const btnLabel = document.getElementById("btn-label");
+      const formStatus = document.getElementById("form-status");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        if (!name || !email || !message) {
+          formStatus.textContent = "⚠ Please fill in all required fields.";
+          formStatus.className = "text-center text-sm text-red-500 mt-2";
+          formStatus.classList.remove("hidden");
+          return;
+        }
+
+        // Simulate sending
+        btnLabel.textContent = "Sending…";
+        setTimeout(() => {
+          btnLabel.textContent = "Send Message";
+          formStatus.textContent =
+            "✅ Message sent! I'll get back to you soon.";
+          formStatus.className = "text-center text-sm text-green-600 mt-2";
+          formStatus.classList.remove("hidden");
+          form.reset();
+        }, 1500);
+      });
+
+      // ── Active nav link highlight on scroll ──
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navLinks.forEach((link) => {
+                link.classList.remove("text-navy", "font-semibold");
+                if (link.getAttribute("href") === "#" + entry.target.id) {
+                  link.classList.add("text-navy", "font-semibold");
+                }
+              });
+            }
+          });
+        },
+        { threshold: 0.4 },
+      );
+
+      sections.forEach((s) => observer.observe(s));
     </script>
   </body>
 </html>
