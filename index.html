@@ -9,6 +9,13 @@
       content="Portfolio of M. Ilfan Asy, a professional Network Engineer and IT Trainer specialising in network infrastructure and IT education."
     />
 
+    <!-- Menambahkan favicon -->
+    <link
+      rel="shortcut icon"
+      href="Assets/Favicon/favicon.ico"
+      type="image/x-icon"
+    />
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -170,6 +177,21 @@
         }
       }
 
+      /* Floating animation for hero photo */
+      @keyframes floating {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .floating-card {
+        animation: floating 3.5s ease-in-out infinite;
+      }
+
       /* Pause on hover of the TRACK (so hovering any pill pauses) */
       .carousel-track:hover {
         animation-play-state: paused;
@@ -267,6 +289,192 @@
       [data-aos] {
         will-change: transform, opacity;
       }
+
+      /* ── Social Media Icons ── */
+      .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+      }
+
+      .social-icon:hover {
+        transform: translateY(-3px);
+      }
+
+      .social-icon.linkedin {
+        background: #0a66c2;
+        color: white;
+      }
+
+      .social-icon.linkedin:hover {
+        background: #084b8c;
+        box-shadow: 0 8px 20px rgba(10, 102, 194, 0.3);
+      }
+
+      .social-icon.github {
+        background: #1f2937;
+        color: white;
+      }
+
+      .social-icon.github:hover {
+        background: #111827;
+        box-shadow: 0 8px 20px rgba(31, 41, 55, 0.3);
+      }
+
+      .social-icon.email {
+        background: #ea4335;
+        color: white;
+      }
+
+      .social-icon.email:hover {
+        background: #c5221f;
+        box-shadow: 0 8px 20px rgba(234, 67, 53, 0.3);
+      }
+
+      .social-icon.whatsapp {
+        background: #25d366;
+        color: white;
+      }
+
+      .social-icon.whatsapp:hover {
+        background: #1fae52;
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+      }
+
+      .social-icon.twitter {
+        background: #1da1f2;
+        color: white;
+      }
+
+      .social-icon.twitter:hover {
+        background: #1a8cd8;
+        box-shadow: 0 8px 20px rgba(29, 161, 242, 0.3);
+      }
+
+      /* ── Lightbox Modal ── */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        animation: fadeIn 0.3s ease;
+        padding: 20px;
+        overflow-y: auto;
+      }
+
+      .lightbox.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox-content {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: slideUp 0.3s ease;
+        margin: auto;
+      }
+
+      /* Mobile (default) */
+      .lightbox-content {
+        width: 90%;
+        max-width: 400px;
+        max-height: calc(100vh - 100px);
+      }
+
+      /* Desktop */
+      @media (min-width: 768px) {
+        .lightbox-content {
+          width: auto;
+          max-width: 600px;
+          max-height: 75vh;
+        }
+      }
+
+      .lightbox-image {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: white;
+        border: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        color: #1f2937;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 1001;
+      }
+
+      .lightbox-close:hover {
+        background: #f3f4f6;
+        transform: scale(1.1) rotate(90deg);
+      }
+
+      /* Desktop close button positioning */
+      @media (min-width: 768px) {
+        .lightbox-close {
+          top: -50px;
+          right: 0;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .cert-card {
+        cursor: pointer;
+      }
+
+      .cert-card img {
+        transition: transform 0.3s ease;
+      }
+
+      .cert-card:hover img {
+        transform: scale(1.05);
+      }
     </style>
   </head>
   <body class="antialiased">
@@ -322,6 +530,28 @@
           </li>
         </ul>
 
+        <!-- Social Media Icons (Desktop) -->
+        <div class="hidden md:flex items-center gap-3">
+          <a
+            href="https://linkedin.com/in/ilfanasy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon linkedin"
+            title="LinkedIn - M. Ilfan Asy"
+          >
+            <i data-lucide="linkedin" class="w-5 h-5"></i>
+          </a>
+          <a
+            href="https://github.com/ilfanasy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon github"
+            title="GitHub - ilfanasy"
+          >
+            <i data-lucide="github" class="w-5 h-5"></i>
+          </a>
+        </div>
+
         <!-- Hamburger -->
         <button
           id="hamburger"
@@ -360,96 +590,140 @@
     <!-- ═══════════════════════════════════════════
      HERO
 ════════════════════════════════════════════ -->
-    <section id="hero" class="min-h-screen flex items-center pt-20 pb-16">
+    <section
+      id="hero"
+      class="min-h-screen flex items-center pt-20 pb-16 bg-gradient-to-b from-offwhite via-white to-offwhite"
+    >
       <div
-        class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center w-full"
+        class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center w-full"
       >
-        <!-- Text -->
-        <div data-aos="fade-right" data-aos-duration="800">
-          <span
-            class="inline-block text-xs font-semibold tracking-widest text-slate uppercase mb-6 border border-slate/30 px-4 py-1.5 rounded-full bg-slate/5"
-            >Available for Projects</span
-          >
+        <!-- Text & Stats (Left Column) -->
+        <div
+          data-aos="fade-right"
+          data-aos-duration="800"
+          class="flex flex-col items-center md:items-start text-center md:text-left w-full"
+        >
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 mb-8">
+            <span
+              class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"
+            ></span>
+            <span
+              class="text-xs font-semibold tracking-widest text-charcoal uppercase"
+              >Available for Projects</span
+            >
+          </div>
+
+          <!-- Name -->
           <h1
-            class="text-5xl md:text-6xl font-extrabold text-charcoal leading-tight mb-4"
+            class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-charcoal leading-tight mb-3"
           >
             M. Ilfan <span class="gradient-text">Asy</span>
           </h1>
-          <p class="text-2xl font-semibold text-navy mb-4">
+
+          <!-- Role -->
+          <p
+            class="text-xl sm:text-2xl md:text-3xl font-semibold text-navy mb-6"
+          >
             Network Engineer &amp; IT Trainer
           </p>
-          <p class="text-muted text-base leading-relaxed mb-8 max-w-md">
+
+          <!-- Description -->
+          <p
+            class="text-muted text-base leading-relaxed mb-10 max-w-xl mx-auto md:mx-0"
+          >
             Designing resilient network infrastructures and empowering the next
             generation of IT professionals through hands-on training,
             documentation, and mentorship.
           </p>
 
           <!-- CTAs -->
-          <div class="flex flex-wrap gap-4">
+          <div
+            class="flex flex-col sm:flex-row gap-4 mb-12 w-full sm:w-auto justify-center md:justify-start"
+          >
             <a
-              href="cv.pdf"
+              href="Assets/CV/CV_ILFAN_EN.pdf"
               download
-              class="inline-flex items-center gap-2 bg-navy text-white px-7 py-3 rounded-full font-semibold text-sm hover:bg-slate transition-colors shadow-lg shadow-navy/20"
+              target="_blank"
+              class="inline-flex items-center justify-center md:justify-start gap-2 bg-navy text-white px-7 py-3 rounded-full font-semibold text-sm hover:bg-slate transition-all duration-300 shadow-lg shadow-navy/25 hover:shadow-xl hover:shadow-navy/35"
             >
               <i data-lucide="download" class="w-4 h-4"></i> Download CV
             </a>
             <a
               href="#contact"
-              class="inline-flex items-center gap-2 border-2 border-navy text-navy px-7 py-3 rounded-full font-semibold text-sm hover:bg-navy hover:text-white transition-colors"
+              class="inline-flex items-center justify-center md:justify-start gap-2 border-2 border-navy text-navy px-7 py-3 rounded-full font-semibold text-sm hover:bg-navy hover:text-white transition-all duration-300"
             >
               <i data-lucide="mail" class="w-4 h-4"></i> Contact Me
             </a>
           </div>
 
-          <!-- Quick stats -->
-          <div class="mt-12 flex gap-10">
-            <div>
-              <p class="text-3xl font-bold text-charcoal">5+</p>
-              <p class="text-xs text-muted mt-1">Years Experience</p>
+          <!-- Statistics -->
+          <div class="grid grid-cols-3 gap-6 md:gap-0 pt-8 w-full">
+            <div
+              class="flex flex-col items-center md:items-start md:border-r md:border-border md:pr-8"
+            >
+              <p class="text-3xl sm:text-4xl font-bold text-charcoal">5+</p>
+              <p class="text-xs text-muted mt-2 font-medium">
+                Years Experience
+              </p>
             </div>
-            <div class="border-l border-border pl-10">
-              <p class="text-3xl font-bold text-charcoal">30+</p>
-              <p class="text-xs text-muted mt-1">Courses Delivered</p>
+            <div
+              class="flex flex-col items-center md:items-start md:border-r md:border-border md:px-8"
+            >
+              <p class="text-3xl sm:text-4xl font-bold text-charcoal">30+</p>
+              <p class="text-xs text-muted mt-2 font-medium">
+                Courses Delivered
+              </p>
             </div>
-            <div class="border-l border-border pl-10">
-              <p class="text-3xl font-bold text-charcoal">10+</p>
-              <p class="text-xs text-muted mt-1">Certifications</p>
+            <div class="flex flex-col items-center md:items-start md:pl-8">
+              <p class="text-3xl sm:text-4xl font-bold text-charcoal">10+</p>
+              <p class="text-xs text-muted mt-2 font-medium">Certifications</p>
             </div>
           </div>
         </div>
 
-        <!-- Photo -->
+        <!-- Photo Card (Right Column) -->
         <div
           data-aos="fade-left"
           data-aos-duration="800"
           data-aos-delay="100"
-          class="flex justify-center"
+          class="flex justify-center w-full"
         >
-          <div class="relative">
-            <!-- decorative ring -->
-            <div
-              class="absolute inset-0 rounded-3xl bg-gradient-to-br from-navy/20 to-slate/20 blur-2xl scale-105"
-            ></div>
-            <div
-              class="relative w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden border-4 border-white shadow-2xl"
-            >
-              <!-- Placeholder avatar — replace src with real photo -->
+          <div class="relative w-full max-w-xs sm:max-w-sm">
+            <!-- Floating container with animation -->
+            <div class="floating-card">
+              <!-- Decorative background glow -->
               <div
-                class="w-full h-full bg-gradient-to-br from-navy to-slate flex items-center justify-center"
-              >
-                <i data-lucide="user" class="w-32 h-32 text-white/40"></i>
-              </div>
-            </div>
-            <!-- floating badge -->
-            <div
-              class="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-2 border border-border"
-            >
-              <div
-                class="w-3 h-3 rounded-full bg-green-400 animate-pulse"
+                class="absolute -inset-8 rounded-3xl bg-gradient-to-br from-navy/15 to-slate/15 blur-3xl"
               ></div>
-              <span class="text-xs font-semibold text-charcoal"
-                >Open to Work</span
+
+              <!-- Photo Card -->
+              <div
+                class="relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl border-2 border-white/50"
               >
+                <!-- Image -->
+                <img
+                  src="Assets/Foto/ilfan.png"
+                  alt="M. Ilfan Asy - Network Engineer & IT Trainer"
+                  class="w-full h-full object-cover"
+                />
+                <!-- Overlay gradient -->
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-charcoal/10 via-transparent to-transparent"
+                ></div>
+              </div>
+
+              <!-- Open to Work Badge -->
+              <div
+                class="absolute bottom-6 right-6 bg-white rounded-2xl shadow-xl px-4 py-2.5 flex items-center gap-2.5 border border-white/80 backdrop-blur-sm"
+              >
+                <span
+                  class="animated-dot w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse block"
+                ></span>
+                <span class="text-xs font-semibold text-charcoal"
+                  >Open to Work</span
+                >
+              </div>
             </div>
           </div>
         </div>
@@ -793,175 +1067,191 @@
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          <!-- Certificate cards — replace bg placeholders with <img src="cert-X.jpg" alt="..." /> inside .cert-card -->
-
+          <!-- Cert 1: MikroTik MTCNA -->
           <div
-            class="cert-card relative shadow-md"
+            class="cert-card relative shadow-md overflow-hidden rounded-lg bg-gray-200"
             data-aos="zoom-in"
             data-aos-delay="0"
+            onclick="openLightbox('Assets/Certificates/Sertifikat MTCNA.jpg')"
           >
-            <div
-              class="w-full h-full aspect-square bg-gradient-to-br from-navy to-slate flex flex-col items-center justify-center text-white p-4"
-            >
-              <i data-lucide="award" class="w-10 h-10 mb-3 opacity-80"></i>
-              <p class="text-xs font-bold text-center">Cisco CCNA</p>
-              <p class="text-[10px] opacity-70 mt-1 text-center">
-                Routing & Switching
-              </p>
-            </div>
-            <div class="cert-overlay">
-              <p class="text-white text-xs font-semibold">Cisco CCNA – R&S</p>
-            </div>
-          </div>
-
-          <div
-            class="cert-card relative shadow-md"
-            data-aos="zoom-in"
-            data-aos-delay="50"
-          >
-            <div
-              class="w-full h-full aspect-square bg-gradient-to-br from-slate-600 to-slate-800 flex flex-col items-center justify-center text-white p-4"
-            >
-              <i
-                data-lucide="shield-check"
-                class="w-10 h-10 mb-3 opacity-80"
-              ></i>
-              <p class="text-xs font-bold text-center">CompTIA Security+</p>
-              <p class="text-[10px] opacity-70 mt-1 text-center">
-                Cybersecurity
-              </p>
-            </div>
-            <div class="cert-overlay">
-              <p class="text-white text-xs font-semibold">CompTIA Security+</p>
-            </div>
-          </div>
-
-          <div
-            class="cert-card relative shadow-md"
-            data-aos="zoom-in"
-            data-aos-delay="100"
-          >
-            <div
-              class="w-full h-full aspect-square bg-gradient-to-br from-indigo-600 to-indigo-900 flex flex-col items-center justify-center text-white p-4"
-            >
-              <i data-lucide="network" class="w-10 h-10 mb-3 opacity-80"></i>
-              <p class="text-xs font-bold text-center">MikroTik MTCNA</p>
-              <p class="text-[10px] opacity-70 mt-1 text-center">
-                Network Associate
-              </p>
-            </div>
+            <img
+              src="Assets/Certificates/Sertifikat MTCNA.jpg"
+              alt="Cisco CCNA"
+              class="w-full h-full aspect-square object-cover"
+            />
             <div class="cert-overlay">
               <p class="text-white text-xs font-semibold">MikroTik MTCNA</p>
             </div>
           </div>
 
+          <!-- Cert 2: MikroTik MTCRE -->
           <div
-            class="cert-card relative shadow-md"
+            class="cert-card relative shadow-md overflow-hidden rounded-lg bg-gray-200"
+            data-aos="zoom-in"
+            data-aos-delay="50"
+            onclick="openLightbox('Assets/Certificates/Sertifikat MTCRE.jpg')"
+          >
+            <img
+              src="Assets/Certificates/Sertifikat MTCRE.jpg"
+              alt="MikroTik MTCRE"
+              class="w-full h-full aspect-square object-cover"
+            />
+            <div class="cert-overlay">
+              <p class="text-white text-xs font-semibold">MikroTik MTCRE</p>
+            </div>
+          </div>
+
+          <!-- Cert 3: Alibaba Cloud -->
+          <div
+            class="cert-card relative shadow-md overflow-hidden rounded-lg bg-gray-200"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            onclick="
+              openLightbox('Assets/Certificates/Alibaba Cloud Cerfiticate.jpg')
+            "
+          >
+            <img
+              src="Assets/Certificates/Alibaba Cloud Cerfiticate.jpg"
+              alt="Alibaba Cloud"
+              class="w-full h-full aspect-square object-cover"
+            />
+            <div class="cert-overlay">
+              <p class="text-white text-xs font-semibold">Alibaba Cloud</p>
+            </div>
+          </div>
+
+          <!-- Cert 4: Debian & Ubuntu -->
+          <div
+            class="cert-card relative shadow-md overflow-hidden rounded-lg bg-gray-200"
             data-aos="zoom-in"
             data-aos-delay="150"
+            onclick="
+              openLightbox(
+                'Assets/Certificates/Debian & Ubuntu Server Administration Certificate.jpg',
+              )
+            "
           >
-            <div
-              class="w-full h-full aspect-square bg-gradient-to-br from-teal-600 to-teal-900 flex flex-col items-center justify-center text-white p-4"
-            >
-              <i data-lucide="book-open" class="w-10 h-10 mb-3 opacity-80"></i>
-              <p class="text-xs font-bold text-center">Certified IT Trainer</p>
-              <p class="text-[10px] opacity-70 mt-1 text-center">
-                Training & Education
-              </p>
-            </div>
+            <img
+              src="Assets/Certificates/Debian & Ubuntu Server Administration Certificate.jpg"
+              alt="Debian & Ubuntu Server Administration"
+              class="w-full h-full aspect-square object-cover"
+            />
             <div class="cert-overlay">
               <p class="text-white text-xs font-semibold">
-                Certified IT Trainer
+                Debian & Ubuntu Server Administration
               </p>
             </div>
           </div>
 
+          <!-- Cert 5: Asesor Kompetensi BNSP -->
           <div
-            class="cert-card relative shadow-md"
+            class="cert-card relative shadow-md overflow-hidden rounded-lg bg-gray-200"
             data-aos="zoom-in"
             data-aos-delay="200"
+            onclick="
+              openLightbox(
+                'Assets/Certificates/Sertifikat Asesor Kompetensi BNSP.jpg',
+              )
+            "
           >
-            <div
-              class="w-full h-full aspect-square bg-gradient-to-br from-orange-500 to-orange-800 flex flex-col items-center justify-center text-white p-4"
-            >
-              <i data-lucide="cloud" class="w-10 h-10 mb-3 opacity-80"></i>
-              <p class="text-xs font-bold text-center">
-                AWS Cloud Practitioner
-              </p>
-              <p class="text-[10px] opacity-70 mt-1 text-center">
-                Cloud Fundamentals
-              </p>
-            </div>
+            <img
+              src="Assets/Certificates/Sertifikat Asesor Kompetensi BNSP.jpg"
+              alt="Asesor Kompetensi BNSP"
+              class="w-full h-full aspect-square object-cover"
+            />
             <div class="cert-overlay">
               <p class="text-white text-xs font-semibold">
-                AWS Cloud Practitioner
+                Asesor Kompetensi BNSP
               </p>
             </div>
           </div>
 
+          <!-- Cert 6: Sertifikat ITSNA-1 -->
           <div
-            class="cert-card relative shadow-md"
+            class="cert-card relative shadow-md overflow-hidden rounded-lg bg-gray-200"
             data-aos="zoom-in"
             data-aos-delay="250"
+            onclick="
+              openLightbox(
+                'Assets/Certificates/IT Network System Administration Certificate1.jpg',
+              )
+            "
           >
-            <div
-              class="w-full h-full aspect-square bg-gradient-to-br from-rose-600 to-rose-900 flex flex-col items-center justify-center text-white p-4"
-            >
-              <i data-lucide="lock" class="w-10 h-10 mb-3 opacity-80"></i>
-              <p class="text-xs font-bold text-center">BNSP Network Tech</p>
-              <p class="text-[10px] opacity-70 mt-1 text-center">
-                National Certification
-              </p>
-            </div>
+            <img
+              src="Assets/Certificates/IT Network System Administration Certificate1.jpg"
+              alt="Sertifikat Lomba IT Network System Administration"
+              class="w-full h-full aspect-square object-cover"
+            />
             <div class="cert-overlay">
               <p class="text-white text-xs font-semibold">
-                BNSP – Network Technician
+                Sertifikat Lomba IT Network System Administration
               </p>
             </div>
           </div>
 
+          <!-- Cert 7: Sertifikat ITSNA-2 -->
           <div
-            class="cert-card relative shadow-md"
+            class="cert-card relative shadow-md overflow-hidden rounded-lg bg-gray-200"
             data-aos="zoom-in"
             data-aos-delay="300"
+            onclick="
+              openLightbox(
+                'Assets/Certificates/IT Network System Administration Certificate2.jpg',
+              )
+            "
           >
-            <div
-              class="w-full h-full aspect-square bg-gradient-to-br from-purple-600 to-purple-900 flex flex-col items-center justify-center text-white p-4"
-            >
-              <i data-lucide="server" class="w-10 h-10 mb-3 opacity-80"></i>
-              <p class="text-xs font-bold text-center">Linux Essentials</p>
-              <p class="text-[10px] opacity-70 mt-1 text-center">
-                LPI Certification
-              </p>
-            </div>
+            <img
+              src="Assets/Certificates/IT Network System Administration Certificate2.jpg"
+              alt="Sertifikat Lomba IT Network System Administration"
+              class="w-full h-full aspect-square object-cover"
+            />
             <div class="cert-overlay">
               <p class="text-white text-xs font-semibold">
-                LPI Linux Essentials
+                Sertifikat Lomba IT Network System Administration
               </p>
             </div>
           </div>
 
+          <!-- Cert 8: Game Competition Certificate -->
           <div
-            class="cert-card relative shadow-md"
+            class="cert-card relative shadow-md overflow-hidden rounded-lg bg-gray-200"
             data-aos="zoom-in"
             data-aos-delay="350"
+            onclick="
+              openLightbox('Assets/Certificates/Game Competition UNUJA.jpg')
+            "
           >
-            <div
-              class="w-full h-full aspect-square bg-gradient-to-br from-cyan-600 to-cyan-900 flex flex-col items-center justify-center text-white p-4"
-            >
-              <i data-lucide="wifi" class="w-10 h-10 mb-3 opacity-80"></i>
-              <p class="text-xs font-bold text-center">Fortinet NSE 4</p>
-              <p class="text-[10px] opacity-70 mt-1 text-center">
-                Network Security
-              </p>
-            </div>
+            <img
+              src="Assets/Certificates/Game Competition UNUJA.jpg"
+              alt="Game Competition UNUJA"
+              class="w-full h-full aspect-square object-cover"
+            />
             <div class="cert-overlay">
-              <p class="text-white text-xs font-semibold">Fortinet NSE 4</p>
+              <p class="text-white text-xs font-semibold">
+                Game Competition UNUJA
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- ═══════════════════════════════════════════
+     LIGHTBOX MODAL
+════════════════════════════════════════════ -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+      <div class="lightbox-content" onclick="event.stopPropagation()">
+        <button class="lightbox-close" onclick="closeLightbox()">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <img
+          id="lightbox-image"
+          src=""
+          alt="Certificate"
+          class="lightbox-image"
+        />
+      </div>
+    </div>
 
     <!-- ═══════════════════════════════════════════
      PROJECTS / EXPERIENCE
@@ -1342,7 +1632,7 @@
             class="w-full bg-navy text-white font-semibold py-3.5 rounded-xl hover:bg-slate transition-colors text-sm flex items-center justify-center gap-2"
           >
             <i data-lucide="send" class="w-4 h-4"></i>
-            <span id="btn-label">Send Message</span>
+            <span id="btn-label">Send via WhatsApp</span>
           </button>
           <p id="form-status" class="text-center text-sm hidden"></p>
         </form>
@@ -1354,26 +1644,72 @@
 ════════════════════════════════════════════ -->
     <footer class="py-10 border-t border-border">
       <div
-        class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted"
+        class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8"
       >
-        <p>
+        <p class="text-xs text-muted">
           © 2025 <span class="font-semibold text-charcoal">M. Ilfan Asy</span>.
           All rights reserved.
         </p>
-        <div class="flex gap-5">
-          <a href="#hero" class="hover:text-navy transition-colors">Home</a>
-          <a href="#skills" class="hover:text-navy transition-colors">Skills</a>
-          <a href="#certs" class="hover:text-navy transition-colors"
-            >Certificates</a
-          >
-          <a href="#projects" class="hover:text-navy transition-colors"
-            >Projects</a
-          >
-          <a href="#contact" class="hover:text-navy transition-colors"
-            >Contact</a
-          >
+
+        <!-- Navigation Links & Social Icons -->
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <!-- Navigation Links -->
+          <div class="flex gap-5 text-xs text-muted">
+            <a href="#hero" class="hover:text-navy transition-colors">Home</a>
+            <a href="#skills" class="hover:text-navy transition-colors"
+              >Skills</a
+            >
+            <a href="#certs" class="hover:text-navy transition-colors"
+              >Certificates</a
+            >
+            <a href="#projects" class="hover:text-navy transition-colors"
+              >Projects</a
+            >
+            <a href="#contact" class="hover:text-navy transition-colors"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Social Icons -->
+          <div class="flex gap-4 items-center">
+            <a
+              href="https://linkedin.com/in/ilfanasy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon linkedin"
+              title="LinkedIn"
+            >
+              <i data-lucide="linkedin" class="w-4 h-4"></i>
+            </a>
+            <a
+              href="https://github.com/ilfanasy"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon github"
+              title="GitHub"
+            >
+              <i data-lucide="github" class="w-4 h-4"></i>
+            </a>
+            <a
+              href="mailto:ilfan@example.com"
+              class="social-icon email"
+              title="Email"
+            >
+              <i data-lucide="mail" class="w-4 h-4"></i>
+            </a>
+            <a
+              href="https://wa.me/628XXXXXXXXXX"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon whatsapp"
+              title="WhatsApp"
+            >
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </a>
+          </div>
         </div>
-        <p>Built with ♥ &amp; Tailwind CSS</p>
+
+        <p class="text-xs text-muted">Built with ♥ &amp; Tailwind CSS</p>
       </div>
     </footer>
 
@@ -1397,7 +1733,29 @@
       // ── Init Lucide icons ──
       lucide.createIcons();
 
-      // ── Init AOS ──
+      // ── Lightbox functionality ──
+      function openLightbox(imageSrc) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightbox-image");
+        lightboxImage.src = imageSrc;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox(event) {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      // Close lightbox with Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeLightbox();
+        }
+      });
+
+      // Init AOS ──
       AOS.init({
         once: true,
         offset: 80,
@@ -1449,7 +1807,7 @@
         });
       });
 
-      // ── Contact form (static / demo) ──
+      // ── Contact form - WhatsApp Integration ──
       const form = document.getElementById("contact-form");
       const btnLabel = document.getElementById("btn-label");
       const formStatus = document.getElementById("form-status");
@@ -1458,6 +1816,7 @@
         e.preventDefault();
         const name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
+        const subject = document.getElementById("subject").value.trim();
         const message = document.getElementById("message").value.trim();
 
         if (!name || !email || !message) {
@@ -1467,16 +1826,43 @@
           return;
         }
 
-        // Simulate sending
-        btnLabel.textContent = "Sending…";
+        // Build WhatsApp message
+        const whatsappText =
+          `*New Contact Form Submission*\n\n` +
+          `*Name:* ${name}\n` +
+          `*Email:* ${email}\n` +
+          `${subject ? `*Subject:* ${subject}\n` : ""}` +
+          `*Message:*\n${message}`;
+
+        // Encode for URL
+        const encodedMessage = encodeURIComponent(whatsappText);
+
+        // Your WhatsApp number (change to your actual number)
+        const whatsappNumber = "6282144356926"; // Format: 62 + nomor (tanpa 0 awal)
+
+        // Build WhatsApp URL
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+        // Show loading state
+        btnLabel.textContent = "Opening WhatsApp…";
+        formStatus.textContent = "💬 Redirecting to WhatsApp...";
+        formStatus.className = "text-center text-sm text-blue-600 mt-2";
+        formStatus.classList.remove("hidden");
+
+        // Small delay untuk user experience
         setTimeout(() => {
-          btnLabel.textContent = "Send Message";
-          formStatus.textContent =
-            "✅ Message sent! I'll get back to you soon.";
-          formStatus.className = "text-center text-sm text-green-600 mt-2";
-          formStatus.classList.remove("hidden");
-          form.reset();
-        }, 1500);
+          // Open WhatsApp in new window
+          window.open(whatsappURL, "_blank");
+
+          // Reset form dan button
+          setTimeout(() => {
+            btnLabel.textContent = "Send via WhatsApp";
+            formStatus.textContent =
+              "✅ WhatsApp opened! Send your message to complete contact.";
+            formStatus.className = "text-center text-sm text-green-600 mt-2";
+            form.reset();
+          }, 500);
+        }, 300);
       });
 
       // ── Active nav link highlight on scroll ──
